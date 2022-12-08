@@ -1,0 +1,22 @@
+{
+    "name": "webflow",
+    "version": "1.0.0",
+    "description": "Admin copy to server",
+    "manifest_version": 3,
+    "permissions": [
+        "activeTab"
+      ],
+      "content_scripts": [
+        {
+          "matches": ["https://webflow.com/*"],
+          "js": ["assets/js/jquery-3.6.1.min.js", "assets/js/app.js"],
+          "css": ["assets/css/app.css"],
+          "run_at": "document_end"
+        }
+      ],
+    "author": "Besnik",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "Admin Copy Server"
+    }
+}
