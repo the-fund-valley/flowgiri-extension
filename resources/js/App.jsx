@@ -9,10 +9,12 @@ export default function App() {
 
 
     return (
-        <RecoilRoot>
+        // <RecoilRoot>
             {/* <RecoilNexus /> */}
-            <Main />
-        </RecoilRoot>
+            {/* <Main />
+        </RecoilRoot> */}
+
+        <div>anir</div>
 
 
     );
