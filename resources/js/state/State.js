@@ -21,10 +21,15 @@ export const TemplatesState = atom({
 });
 
 
-export const  ThemesCatagoryState = atom({
-    key: "ThemesCatagoryState",
+export const  ThemesCategoryState = atom({
+    key: "ThemesCategoryState",
     default: [
         'Navigation', 'header', 'Sign in/ Sign up', 'Features', 'Blog Posts', 'Portfolio', 'Testimonials',
-        'Navigation', 'header', 'Sign in/ Sign up', 'Features', 'Blog Posts', 'Portfolio'
+        'Navasdigation', 'haseader', 'Sisgn in/ Sign up', 'Fedfatures', 'Blogs Posts', 'Porstfolio'
     ]
+});
+
+export const  activeCategoryState = atom({
+    key: "activeCategoryState",
+    default: ''
 });

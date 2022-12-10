@@ -1,24 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { NavigationsButtons } from '../data/data.js'
 
 function Filter() {
+
+    const [activeButton, setActiveButton] = useState( {
+        id:'templates',
+        name:'Templates',
+        left:'4px'
+    })
+
+    const selectTab = (item) => {
+        setActiveButton(item)
+    }
+
+    useEffect(()=>{
+        const activeBtn = document.getElementById('active-button')
+
+        activeBtn.style.left = activeButton.left
+
+    },[activeButton])
+
+
     return (
         <div className='w-full py-[28px] px-[20px] flex justify-between items-center'>
-            <div className='btns w-[404px] relative rounded-[42px] bg-[#fff] flex justify-between h-[44px] shadow-[0px_1.7109px_1.7109px_#E9E9E9]'>
-                <button className='w-[100px] absolute left-[4px] bg-[#5E5DF0] rounded-[42px] top-[3px] h-[38px]'>
-                        
+            <div className='btns  relative rounded-[42px] bg-[#fff] flex justify-between h-[44px] shadow-[0px_1.7109px_1.7109px_#E9E9E9]'>
+                <button id='active-button'  className='w-[100px] transition-[left] duration-300 absolute left-[4px] bg-[#5E5DF0] rounded-[42px] top-[3px] h-[38px]'>
+
                 </button>
-                <button className='w-[100px] h-full flex justify-center items-center font-bold text-[14px] leading-[12px]'>
-                    Templates
-                </button>
-                <button className='w-[100px] h-full flex justify-center items-center font-bold text-[14px] leading-[12px]'>
-                    Pages
-                </button>
-                <button className='w-[100px] h-full flex justify-center items-center font-bold text-[14px] leading-[12px]'>
-                    Sections
-                </button>
-                <button className='w-[100px] h-full flex justify-center items-center font-bold text-[14px] leading-[12px]'>
-                    Component
-                </button>
+
+                {
+                    Object.keys(NavigationsButtons).map((item, i) => {
+                        return (
+                            <button key={i} onClick={() => selectTab(NavigationsButtons[item])} style={{color: NavigationsButtons[item].id == activeButton.id? 'white':''}} className='w-[104px] h-full flex z-[200] justify-center items-center font-bold text-[14px] leading-[12px]'>
+                            {NavigationsButtons[item].name}
+                        </button>
+                        )
+                    })
+                }
+
+
+
+
             </div>
             <div className='searchbar w-[241px] h-[44px] relative shadow-[0px_1.7109px_1.7109px_#E9E9E9] rounded-[42px]'>
                 <img src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/random/v1mcIe7iYXd80obyy2mq1670497753.svg" className='absolute top-[13px] left-[13px]' alt="" />
