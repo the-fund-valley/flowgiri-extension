@@ -7,13 +7,15 @@ function Main() {
   return (
     <div className='bg-[#F3F3F3] max-w-[833px]'>
         <Navbar/>
-    
+
+
+
         <Filter/>
-  
+
         <FlowgiriComponents/>
 
-    
-        
+
+
 
     </div>
   )
