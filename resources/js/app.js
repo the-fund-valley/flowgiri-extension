@@ -15,12 +15,12 @@ function FlowGiriInit() {
 }
 
     setTimeout(function (){
-        let div = '<div id="flowGiriApp"> hi</div>';
+        let div = '<div id="flowGiriApp"> </div>';
 
         $(".left-sidebar-links").append(div);
 
         FlowGiriInit();
 
-    }, 2000)
+    }, 3000)
 
 
