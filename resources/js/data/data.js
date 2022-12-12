@@ -10,11 +10,11 @@ export const NavigationsButtons = {
         name:'Sections',
         left:'100px'
     },
-    // pages: {
-    //     id:'pages',
-    //     name:'Pages',
-    //     left:'208px'
-    // },
+    pages: {
+        id:'pages',
+        name:'Pages',
+        left:'190px'
+    },
     // components: {
     //     id:'components',
     //     name:'Components',

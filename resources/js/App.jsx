@@ -7,7 +7,7 @@ import { RecoilRoot, } from 'recoil';
 window.React = React
 export default function App() {
 
-    const [extensionIsOn, setExtensionIsOn] = useState(true)
+    const [extensionIsOn, setExtensionIsOn] = useState(false)
 
 
     useEffect(()=> {

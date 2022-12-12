@@ -51,3 +51,15 @@ export const  contentFreeState = atom({
     key: "contentFreeState",
     default: true
 });
+
+
+export const  activeButtonState = atom({
+    key: "activeButtonState",
+    default: {
+        id:'templates',
+        name:'Templates',
+        left:'4px'
+    }
+});
+
+

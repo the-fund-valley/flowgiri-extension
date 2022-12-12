@@ -1,6 +1,7 @@
 import React from 'react'
 import Filter from './components/Filter.jsx'
-import FlowgiriComponents from './components/FlowgiriComponents.jsx'
+import FlowContents from './components/FlowContents.jsx'
+
 import Navbar from './components/Navbar.jsx'
 
 function Main() {
@@ -10,7 +11,7 @@ function Main() {
 
         <Filter/>
 
-        <FlowgiriComponents/>
+        <FlowContents/>
 
     </div>
   )

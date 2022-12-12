@@ -1,24 +1,18 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { NavigationsButtons } from '../data/data.js'
 import { useRecoilState } from 'recoil';
-import { activeCategoryState, contentFreeState, searchKeywordState } from '../state/State.js';
+import { activeButtonState, activeCategoryState, contentFreeState, searchKeywordState } from '../state/State.js';
 import { debounce } from '../helper/helper.js';
 import { getSearchData } from '../Request/api.js';
 
 function Filter() {
 
-    const [activeButton, setActiveButton] = useState( {
-        id:'templates',
-        name:'Templates',
-        left:'4px'
-    })
+    const [activeButton, setActiveButton] = useRecoilState(activeButtonState)
     const [contentFree, setContentFree] = useRecoilState(contentFreeState);
 
     const [activeCategory, setActiveCategory] = useRecoilState(activeCategoryState);
 
     const [searchKeyword, setSearchKeyword] = useRecoilState(searchKeywordState)
-
-
 
     const searchContent = useCallback(debounce(getSearchData), []);
 
@@ -44,9 +38,16 @@ function Filter() {
     },[activeButton])
 
 
+
+    const toggleFreeAndPro = () => {
+        setContentFree(!contentFree)
+        getSearchData()
+    }
+
+
     return (
         <div className='w-full py-[28px] px-[20px] flex justify-between items-center'>
-            <div className='btns  relative w-[203px] px-[10px] rounded-[42px] bg-[#fff] flex justify-between h-[44px] shadow-[0px_1.7109px_1.7109px_#E9E9E9]'>
+            <div className='btns  relative w-[295px] px-[10px] rounded-[42px] bg-[#fff] flex justify-between h-[44px] shadow-[0px_1.7109px_1.7109px_#E9E9E9]'>
                 <button id='active-button'  className='w-[100px] transition-[left] duration-300 absolute left-[4px] bg-[#5E5DF0] rounded-[42px] top-[3px] h-[38px]'>
 
                 </button>
@@ -78,9 +79,7 @@ function Filter() {
                         readOnly
                     />
                     <div
-                        onClick={() => {
-                            setContentFree(!contentFree);
-                        }}
+                        onClick={toggleFreeAndPro}
                         className="w-11 h-6 bg-gray-200 rounded-full peer  peer-focus:ring-green-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"
                     ></div>
                     <span className="ml-2 text-[#191919] text-[14px] leading-[12px]">

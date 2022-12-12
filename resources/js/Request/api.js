@@ -1,5 +1,5 @@
 import { getRecoil, setRecoil } from "recoil-nexus"
-import { activeCategoryState, activeThemeState, contentFreeState, searchKeywordState, SectionsState, TemplatesState, ThemesState } from "../state/State"
+import { activeCategoryState, activeThemeState, contentFreeState, pagesState, searchKeywordState, SectionsState, TemplatesState, ThemesState } from "../state/State"
 import { request } from "./"
 
 export const getAndSetThemesDataToState = async () => {
@@ -12,16 +12,19 @@ export const getAndSetThemesDataToState = async () => {
 
 export const getAndSetThemeDataToState = async (id) => {
     let receivedData ;
+
     if(getRecoil(activeCategoryState) === 'templates'){
         receivedData  = await request.get('api/theme-templates?',{id})
         setRecoil(TemplatesState, receivedData.data)
     } else if (getRecoil(activeCategoryState) === 'sections') {
         receivedData  = await request.get('api/theme-sections?',{id})
         setRecoil(SectionsState, receivedData.data)
+    } else if (getRecoil(activeCategoryState) === 'pages') {
+        receivedData  = await request.get('api/theme-pages?',{id})
+        setRecoil(pagesState, receivedData.data)
     }
 
     setRecoil(activeThemeState, receivedData)
-
  }
 
 export const getAllTemplates = async () => {
@@ -40,6 +43,7 @@ export const getSearchData = async () => {
     let receivedData ;
     let id = getRecoil(activeThemeState)?.id
     let free = getRecoil(contentFreeState)
+    let searchText = getRecoil(searchKeywordState)
     let params = {}
     if(id){
         params.id = id
@@ -47,15 +51,16 @@ export const getSearchData = async () => {
     if(free) {
         params.is_pro = free
     }
-
-    let searchText = getRecoil(searchKeywordState)
+    if(searchText.length){
+        params.str = searchText
+    }
 
     if(getRecoil(activeCategoryState) === 'templates'){
-        receivedData  = await request.get('api/theme-templates?',{id,str:searchText})
+        receivedData  = await request.get('api/theme-templates?',params)
         console.log(receivedData.data)
         setRecoil(TemplatesState, receivedData.data)
     } else if (getRecoil(activeCategoryState) === 'sections') {
-        receivedData  = await request.get('api/theme-sections?',{id,str:searchText})
+        receivedData  = await request.get('api/theme-sections?',params)
         console.log(receivedData.data)
         setRecoil(SectionsState, receivedData.data)
     }
