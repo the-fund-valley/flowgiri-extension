@@ -6,11 +6,18 @@ function ContentCard({ key }) {
   const copyToClipBoard = async () => {
    // navigator.clipboard.writeText(JSON.stringify(componentData));
 
+  //  const btn = document.querySelector('.btn-img-scroll')
 
-    await navigator.clipboard.writeText(JSON.stringify(componentData));
+  //  btn.addEventListener('copy', (event) => {
+  //      event.clipboardData.setData('text/json', JSON.stringify(componentData));
+  //      console.log(e.clipboardData.getData('application/json'))
+  //      event.preventDefault();
+  //  });
 
-    navigator.clipboard.readText().then(
-      (clipText) => console.log(clipText));
+     await navigator.clipboard.writeText(JSON.stringify(componentData));
+    console.log(e.clipboardData.getData('application/json'))
+    // navigator.clipboard.readText().then(
+    //   (clipText) => console.log(clipText));
   }
 
   return (
