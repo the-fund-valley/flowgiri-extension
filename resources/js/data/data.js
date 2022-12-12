@@ -8,18 +8,18 @@ export const NavigationsButtons = {
     sections: {
         id:'sections',
         name:'Sections',
-        left:'105px'
+        left:'100px'
     },
-    pages: {
-        id:'pages',
-        name:'Pages',
-        left:'208px'
-    },
-    components: {
-        id:'components',
-        name:'Components',
-        left:'313px'
-    }
+    // pages: {
+    //     id:'pages',
+    //     name:'Pages',
+    //     left:'208px'
+    // },
+    // components: {
+    //     id:'components',
+    //     name:'Components',
+    //     left:'313px'
+    // }
 
 }
 

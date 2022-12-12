@@ -1,3 +1,4 @@
+import { baseURL } from "../constants";
 
 
 export const request = {};
@@ -14,27 +15,27 @@ request.get = async (path, id = '') => {
     }
 }
 
-request.getAll = (path) => {
 
 
-    return new Promise((resolve, reject) => {
 
-        fetch(path).then(res => {
 
-            if (res.status === 200 || 201) {
+request.getAll = async (path) => {
+    var headers = {}
 
-                resolve(res.json())
-
-            } else {
-                resolve(false)
-            }
-        })
-
+    let response = await fetch(baseURL+path,{
+        method : "GET",
+        mode: 'cors',
+        headers: headers
     })
+    console.log(response)
+    if (response.status === 200 || response.status === 201 ) {
+
+        return  await response.json();
+    } else {
+        let data = await response.json();
+
+      return false;
+    }
 }
-
-
-
-
 
 

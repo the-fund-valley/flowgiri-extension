@@ -4,6 +4,7 @@ import Sidebar from './Sidebar.jsx'
 import { useRecoilValue } from 'recoil';
 import { activeCategoryState, componentsState } from '../state/State.js';
 import { pagesState, TemplatesState, SectionsState } from './../state/State';
+import { getAndSetThemeData } from '../Request/api.js';
 
 function FlowgiriComponents() {
 
@@ -42,6 +43,10 @@ function FlowgiriComponents() {
 
   },[activeCategory])
 
+
+  useEffect(()=>{
+    getAndSetThemeData()
+  })
 
   return (
     <div className='w-full pb-[28px] gap-[17px] flex  px-[20px] '>

@@ -41,7 +41,7 @@ function Filter() {
 
     return (
         <div className='w-full py-[28px] px-[20px] flex justify-between items-center'>
-            <div className='btns  relative w-[416px] px-[10px] rounded-[42px] bg-[#fff] flex justify-between h-[44px] shadow-[0px_1.7109px_1.7109px_#E9E9E9]'>
+            <div className='btns  relative w-[203px] px-[10px] rounded-[42px] bg-[#fff] flex justify-between h-[44px] shadow-[0px_1.7109px_1.7109px_#E9E9E9]'>
                 <button id='active-button'  className='w-[100px] transition-[left] duration-300 absolute left-[4px] bg-[#5E5DF0] rounded-[42px] top-[3px] h-[38px]'>
 
                 </button>
@@ -49,7 +49,7 @@ function Filter() {
                 {
                     Object.keys(NavigationsButtons).map((item, i) => {
                         return (
-                            <button key={i} onClick={() => selectTab(NavigationsButtons[item])} style={{color: NavigationsButtons[item].id == activeButton.id? 'white':''}} className='w-[104px] h-full flex z-[200] justify-center text-[#000] items-center font-bold text-[14px] leading-[12px]'>
+                            <button key={i} onClick={() => selectTab(NavigationsButtons[item])} style={{color: NavigationsButtons[item].id == activeButton.id? 'white':''}} className='h-full flex z-[200] w-[100px] justify-center text-[#000] items-center font-bold text-[14px] leading-[12px]'>
                             {NavigationsButtons[item].name}
                         </button>
                         )
