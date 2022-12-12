@@ -50,3 +50,14 @@ body {
     transition: transform 5s ease-in-out;
   }
 
+.content-card-container::-webkit-scrollbar
+{
+    width: 7px;
+    background-color: #ebebeb;
+}
+.content-card-container::-webkit-scrollbar-thumb
+{
+    border-radius: none;
+    -webkit-box-shadow: inset 0 0 6px rgba(168, 167, 167, 0.3);
+    background-color: #BDB5AD;
+}

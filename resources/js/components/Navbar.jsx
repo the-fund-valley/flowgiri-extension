@@ -20,12 +20,8 @@ function Navbar() {
                     </ul>
                 </div>
 
-
-
-
-
                 <div class="flex gap-[30px] items-center justify-center">
-                    
+
                     <a href="" class="font-bold text-[14px] leading-[12px] text-[#FFFFFF] opacity-50" >
                         Pricing
                     </a>
