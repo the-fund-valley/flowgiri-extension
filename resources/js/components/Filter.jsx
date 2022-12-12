@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { NavigationsButtons } from '../data/data.js'
 import { useRecoilState } from 'recoil';
-import { activeCategoryState, searchKeywordState } from '../state/State.js';
+import { activeCategoryState, contentFreeState, searchKeywordState } from '../state/State.js';
+import { debounce } from '../helper/helper.js';
+import { getSearchData } from '../Request/api.js';
 
 function Filter() {
 
@@ -10,19 +12,22 @@ function Filter() {
         name:'Templates',
         left:'4px'
     })
-    const [free, setFree] = useState(true);
+    const [contentFree, setContentFree] = useRecoilState(contentFreeState);
 
-    const [actievCategory, setActiveCategory] = useRecoilState(activeCategoryState);
+    const [activeCategory, setActiveCategory] = useRecoilState(activeCategoryState);
 
     const [searchKeyword, setSearchKeyword] = useRecoilState(searchKeywordState)
 
 
 
+    const searchContent = useCallback(debounce(getSearchData), []);
 
     const searchHandler = (text) => {
         setSearchKeyword(text)
+        searchContent()
     }
 
+    // theme_id, is_pro, category_id, str
 
     const selectTab = (item) => {
         setActiveButton(item)
@@ -69,12 +74,12 @@ function Filter() {
                     <input
                         type="checkbox"
                         className="sr-only peer"
-                        checked={free}
+                        checked={contentFree}
                         readOnly
                     />
                     <div
                         onClick={() => {
-                            setFree(!free);
+                            setContentFree(!contentFree);
                         }}
                         className="w-11 h-6 bg-gray-200 rounded-full peer  peer-focus:ring-green-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"
                     ></div>

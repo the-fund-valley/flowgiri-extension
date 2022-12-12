@@ -15,12 +15,12 @@ export const componentsState = atom({
 
 export const SectionsState = atom({
     key: "SectionsState",
-    default: [1,2,3]
+    default: []
 });
 
 export const TemplatesState = atom({
     key: "TemplatesState",
-    default: [1,2,3,4,5,6,7,8]
+    default: []
 });
 
 
@@ -44,4 +44,10 @@ export const  activeCategoryState = atom({
 export const  searchKeywordState = atom({
     key: "searchKeywordState",
     default: ''
+});
+
+
+export const  contentFreeState = atom({
+    key: "contentFreeState",
+    default: true
 });

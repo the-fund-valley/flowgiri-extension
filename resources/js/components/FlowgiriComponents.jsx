@@ -4,7 +4,7 @@ import Sidebar from './Sidebar.jsx'
 import { useRecoilValue } from 'recoil';
 import { activeCategoryState, componentsState } from '../state/State.js';
 import { pagesState, TemplatesState, SectionsState } from './../state/State';
-import { getAndSetThemeData } from '../Request/api.js';
+import { getAndSetThemesDataToState } from '../Request/api.js';
 
 function FlowgiriComponents() {
 
@@ -20,8 +20,6 @@ function FlowgiriComponents() {
 
   useEffect( () => {
 
-
-   console.log('category',activeCategory)
     switch(activeCategory) {
 
       case 'templates':
@@ -30,12 +28,12 @@ function FlowgiriComponents() {
       case 'sections':
         setContentsData(sections)
         break;
-      case 'pages':
-        setContentsData(pages)
-        break;
-      case 'components':
-        setContentsData(components)
-        break;
+      // case 'pages':
+      //   setContentsData(pages)
+      //   break;
+      // case 'components':
+      //   setContentsData(components)
+      //   break;
       default:
 
     }
@@ -45,8 +43,8 @@ function FlowgiriComponents() {
 
 
   useEffect(()=>{
-    getAndSetThemeData()
-  })
+    getAndSetThemesDataToState()
+  },[])
 
   return (
     <div className='w-full pb-[28px] gap-[17px] flex  px-[20px] '>
@@ -55,7 +53,7 @@ function FlowgiriComponents() {
         <div className="items">
             <div className="grid  gap-[18px] px-[0px] pb-8 flex grid-cols-1 md:grid-cols-2 max-h-[80vh] overflow-auto content-card-container">
               {contentsData.map((item, i) => {
-                return <ContentCard key={i} />;
+                return <ContentCard item={item} key={i} />;
               })}
             </div>
           </div>

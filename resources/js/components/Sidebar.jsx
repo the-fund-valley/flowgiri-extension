@@ -1,6 +1,7 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { activeThemeState, ThemesState } from "../state/State";
+import { getAndSetThemeDataToState } from './../Request/api';
 
 
 function Sidebar() {
@@ -8,8 +9,12 @@ function Sidebar() {
   const [activeTheme, setActiveTheme] = useRecoilState(activeThemeState)
 
   const selectTheme = (item) => {
+    console.log(activeTheme)
+
     setActiveTheme(item)
+    getAndSetThemeDataToState(item.id)
   }
+
 
 
   return (

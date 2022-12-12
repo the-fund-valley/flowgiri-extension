@@ -3,9 +3,8 @@ import { baseURL } from "../constants";
 
 export const request = {};
 
-request.get = async (path, id = '') => {
-
-    let response = await fetch(path + id)
+request.get = async (path, params) => {
+    let response = await fetch(baseURL + path  + new URLSearchParams(params))
     if (response.status === 200 || response.status === 201 ) {
         return  await response.json();
     } else {
@@ -27,7 +26,7 @@ request.getAll = async (path) => {
         mode: 'cors',
         headers: headers
     })
-    console.log(response)
+
     if (response.status === 200 || response.status === 201 ) {
 
         return  await response.json();

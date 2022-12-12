@@ -21,6 +21,6 @@ function FlowGiriInit() {
 
         FlowGiriInit();
 
-    }, 3000)
+    }, 100)
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { componentData } from "../data/data";
 
-function ContentCard({ key }) {
+function ContentCard({ key, item}) {
 
   const copyToClipBoard = async () => {
    // navigator.clipboard.writeText(JSON.stringify(componentData));
@@ -34,7 +34,7 @@ function ContentCard({ key }) {
       </div>
 
       <h4 className="mt-3 text-center text-lg font-bold leading-[22px] text-[#161616]">
-        Ecommerce Header
+        {item.name}
       </h4>
       <div className="mt-4 flex items-center justify-center ">
         <button onClick={()=>copyToClipBoard()} className=" btn-img-scroll bg-[#fff] relative min-w-[206px] flex justify-center cursor-pointer rounded-md py-3  text-center text-sm font-bold leading-[15px] shadow-template-card transition-all delay-100 ease-in-out  hover:transition-all">
