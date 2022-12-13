@@ -63,3 +63,21 @@ export const  activeButtonState = atom({
 });
 
 
+
+export const  themesCatagoriesState = atom({
+    key: "themesCatagories",
+    default: []
+});
+
+
+export const  sectionsCatagoriesState = atom({
+    key: "sectionsCatagories",
+    default: []
+});
+
+
+export const  pagesCatagoriesState = atom({
+    key: "templatesCatagories",
+    default: []
+});
+

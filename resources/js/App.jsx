@@ -7,7 +7,7 @@ import { RecoilRoot, } from 'recoil';
 window.React = React
 export default function App() {
 
-    const [extensionIsOn, setExtensionIsOn] = useState(false)
+    const [extensionIsOn, setExtensionIsOn] = useState(true)
 
 
     useEffect(()=> {
@@ -15,7 +15,7 @@ export default function App() {
         document.addEventListener('click', function(event) {
             const isOutside = event.target.closest('.flowgiri-applicaiton');
 
-            //if(!isOutside && extensionIsOn)  setExtensionIsOn(false)
+           // if(!isOutside && extensionIsOn)  setExtensionIsOn(false)
 
 
           })

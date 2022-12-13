@@ -14,7 +14,7 @@ function Navbar() {
                             <a href="#" class="font-bold text-[14px] leading-[12px] text-[#FFFFFF] opacity-50" >Resources</a>
                         </li>
                         <li>
-                            <a href="#" class="font-bold text-[14px] leading-[12px] text-[#FFFFFF] opacity-50">Tutorials</a>
+                            {/* <a href="#" class="font-bold text-[14px] leading-[12px] text-[#FFFFFF] opacity-50">Tutorials</a> */}
                         </li>
 
                     </ul>

@@ -23,7 +23,8 @@ function FlowContents() {
 
   return (
     <div className='w-full pb-[28px] gap-[17px] flex  px-[20px] '>
-      <Sidebar/>
+
+
        {activeCategory === 'templates' && <Templates/>}
        {activeCategory === 'sections' && <Sections/>}
        {activeCategory === 'pages' && <Pages/>}
