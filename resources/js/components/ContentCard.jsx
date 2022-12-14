@@ -39,7 +39,7 @@ function ContentCard({ key, item }) {
     else if(activeBtn.id === 'sections')  params.type = 'component'
 
     const response = request.post('api/product-copy-count',params);
-    console.log(response)
+
   }
 
   return (

@@ -17,7 +17,7 @@ request.get = async (path, params) => {
 
 
 request.post = async (path,params) => {
-    console.log(params)
+
 
     const ProjectRequestOptions = {
         method: 'POST',
@@ -26,7 +26,7 @@ request.post = async (path,params) => {
 
     let response = await fetch(baseURL + path ,ProjectRequestOptions)
     let result = await response.json()
-    console.log(result)
+
     // if (response.status === 200 || response.status === 201 ) {
     //     console.log("counted")
     //     return  await response.json();

@@ -9,7 +9,7 @@ function Sidebar({catagories, setter,activeCategory}) {
   const [activeButton, setActiveButton] = useRecoilState(activeButtonState)
 
   const selectCategory = (item) => {
-    console.log(item)
+
     if(!item) {
       setter({})
       getAndSetThemeDataToState()

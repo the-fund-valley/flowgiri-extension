@@ -14,7 +14,7 @@ export default function App() {
 
         document.addEventListener('click', function(event) {
             const isOutside = event.target.closest('.flowgiri-applicaiton');
-            console.log(isOutside, extensionIsOn)
+
             if(!isOutside && extensionIsOn)  setExtensionIsOn(false)
 
             //if(!isOutside && !extensionIsOn)   setExtensionIsOn(true)
