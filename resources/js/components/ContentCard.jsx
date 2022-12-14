@@ -8,14 +8,14 @@ function ContentCard({ key, item }) {
   const [codeCopied, setCodeCopied] = useState(false);
   const [upgradePlan, setUpgradePlan] = useState(false)
 
-  const copyToClipBoard = async (evt) => {
+  const copyToClipBoard = async () => {
+
     if (item.is_pro === "true") {
       setUpgradePlan(true);
       return
     }
 
-
-    function listener() {
+    function listener(evt) {
       evt.clipboardData.setData("application/json", item.component_code.code);
       evt.preventDefault();
     }
@@ -56,7 +56,7 @@ function ContentCard({ key, item }) {
       </h4>
       <div className="mt-4 flex items-center justify-center ">
         <button
-          onClick={(evt) => copyToClipBoard(evt)}
+          onClick={copyToClipBoard}
           className=" btn-img-scroll bg-[#fff] relative min-w-[206px] flex justify-center cursor-pointer rounded-md py-3  text-center text-sm font-bold leading-[15px] shadow-template-card transition-all delay-100 ease-in-out  hover:transition-all border-[1px] border-solid border-[rgba(41,45,50,0.1)] shadow-[0px_1.7109px_10.2654px_-4.37302px_#FFFFFF] text-[#191919]"
         >
           <svg
