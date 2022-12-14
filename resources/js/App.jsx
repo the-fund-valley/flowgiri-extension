@@ -10,19 +10,19 @@ export default function App() {
     const [extensionIsOn, setExtensionIsOn] = useState(false)
 
 
-    useEffect(()=> {
+    // useEffect(()=> {
 
-        document.addEventListener('click', function(event) {
-            const isOutside = event.target.closest('.flowgiri-applicaiton');
+    //     document.addEventListener('click', function(event) {
+    //         const isOutside = event.target.closest('.flowgiri-applicaiton');
 
-            if(!isOutside && extensionIsOn)  setExtensionIsOn(false)
+    //         if(!isOutside && extensionIsOn)  setExtensionIsOn(false)
 
-            //if(!isOutside && !extensionIsOn)   setExtensionIsOn(true)
+    //         //if(!isOutside && !extensionIsOn)   setExtensionIsOn(true)
 
 
-          })
+    //       })
 
-    },[])
+    // },[])
 
 
 

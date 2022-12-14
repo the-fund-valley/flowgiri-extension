@@ -95,7 +95,7 @@ export const  noTemplateState = atom({
     default: false
 });
 export const  noSectionState = atom({
-    key: "noTemplateState",
+    key: "noSectionState",
     default: false
 });
 export const  noPageState = atom({
