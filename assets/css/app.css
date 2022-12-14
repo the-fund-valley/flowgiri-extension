@@ -801,11 +801,11 @@ video {
 .h-\[28px\]{
   height: 28px;
 }
+.h-\[80\%\]{
+  height: 80%;
+}
 .h-\[100vh\]{
   height: 100vh;
-}
-.h-\[80vh\]{
-  height: 80vh;
 }
 .max-h-\[215px\]{
   max-height: 215px;
@@ -854,6 +854,9 @@ video {
 }
 .w-\[63px\]{
   width: 63px;
+}
+.w-\[500px\]{
+  width: 500px;
 }
 .w-\[833px\]{
   width: 833px;
@@ -1043,6 +1046,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 197, 85, var(--tw-bg-opacity));
 }
+.bg-\[\#f5f5f5\]{
+  --tw-bg-opacity: 1;
+  background-color: rgba(245, 245, 245, var(--tw-bg-opacity));
+}
 .bg-\[\#212121\]{
   --tw-bg-opacity: 1;
   background-color: rgba(33, 33, 33, var(--tw-bg-opacity));
@@ -1105,6 +1112,10 @@ video {
   padding-left: 10px;
   padding-right: 10px;
 }
+.px-\[3px\]{
+  padding-left: 3px;
+  padding-right: 3px;
+}
 .py-\[7px\]{
   padding-top: 7px;
   padding-bottom: 7px;
@@ -1135,11 +1146,11 @@ video {
 .pb-\[20px\]{
   padding-bottom: 20px;
 }
-.pl-\[30px\]{
-  padding-left: 30px;
+.pl-\[20px\]{
+  padding-left: 20px;
 }
-.pl-\[27px\]{
-  padding-left: 27px;
+.pl-\[17px\]{
+  padding-left: 17px;
 }
 .pt-\[14px\]{
   padding-top: 14px;
@@ -1153,8 +1164,14 @@ video {
 .pb-8{
   padding-bottom: 2rem;
 }
+.pr-\[7px\]{
+  padding-right: 7px;
+}
 .pb-\[28px\]{
   padding-bottom: 28px;
+}
+.pr-\[10px\]{
+  padding-right: 10px;
 }
 .text-center{
   text-align: center;
@@ -1185,6 +1202,9 @@ video {
 .text-sm{
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+.text-\[30px\]{
+  font-size: 30px;
 }
 .text-\[19px\]{
   font-size: 19px;
@@ -1224,6 +1244,9 @@ video {
 }
 .leading-\[15px\]{
   line-height: 15px;
+}
+.leading-\[55px\]{
+  line-height: 55px;
 }
 .text-\[\#fff\]{
   --tw-text-opacity: 1;
@@ -1397,7 +1420,7 @@ body {
     background-color: #5e5df0;
   }
 
-/* .content-card-container::-webkit-scrollbar
+.content-card-container::-webkit-scrollbar
 {
     width: 7px;
     background-color: #ebebeb;
@@ -1407,7 +1430,8 @@ body {
     border-radius: none;
     -webkit-box-shadow: inset 0 0 6px rgba(168, 167, 167, 0.3);
     background-color: #BDB5AD;
-} */
+}
+
 .content-catagory-list{
   overflow-x: hidden ;
   overflow-y:auto;

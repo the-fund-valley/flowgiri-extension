@@ -49,7 +49,7 @@ export const  searchKeywordState = atom({
 
 export const  contentFreeState = atom({
     key: "contentFreeState",
-    default: true
+    default: false
 });
 
 
@@ -75,9 +75,30 @@ export const  sectionsCatagoriesState = atom({
     default: []
 });
 
-
-export const  pagesCatagoriesState = atom({
-    key: "templatesCatagories",
-    default: []
+export const  activeSectionCatagoriesState = atom({
+    key: "activeSectionCatagoriesState",
+    default: {}
+});
+export const  activePagesCatagoriesState = atom({
+    key: "activePagesCatagoriesState",
+    default: {}
 });
 
+
+export const  pagesCatagoriesState = atom({
+    key: "pagesCatagoriesState",
+    default: {}
+});
+
+export const  noTemplateState = atom({
+    key: "noTemplateState",
+    default: false
+});
+export const  noSectionState = atom({
+    key: "noTemplateState",
+    default: false
+});
+export const  noPageState = atom({
+    key: "noPageState",
+    default: false
+});

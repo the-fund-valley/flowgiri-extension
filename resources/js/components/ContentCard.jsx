@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { componentData } from "../data/data";
+import { request } from "../Request";
+import { getRecoil } from 'recoil-nexus';
+import { activeButtonState } from "../state/State";
 
 function ContentCard({ key, item }) {
   const [codeCopied, setCodeCopied] = useState(false);
@@ -21,11 +24,23 @@ function ContentCard({ key, item }) {
     document.execCommand("copy");
     document.removeEventListener("copy", listener);
     setCodeCopied(true)
+    countCopyHandler()
     // webToast.Success({
     //   status: "Success !",
     //   message: "Copied to clipboard"
     // });
   };
+
+  const countCopyHandler = () =>  {
+    let params = {}
+    params.id = item.id
+    let activeBtn = getRecoil(activeButtonState)
+    if(activeBtn.id === 'templates')  params.type = 'template'
+    else if(activeBtn.id === 'sections')  params.type = 'component'
+
+    const response = request.post('api/product-copy-count',params);
+    console.log(response)
+  }
 
   return (
     <div

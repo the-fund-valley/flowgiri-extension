@@ -22,7 +22,7 @@ function FlowContents() {
   },[activeCategory])
 
   return (
-    <div className='w-full pb-[28px] gap-[17px] flex  px-[20px] '>
+    <div className='w-full pb-[28px] gap-[17px] flex  pl-[20px] pr-[10px]'>
 
 
        {activeCategory === 'templates' && <Templates/>}

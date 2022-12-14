@@ -65,7 +65,7 @@ function Filter() {
             </div>
             <div className='searchbar w-[241px] h-[44px] relative shadow-[0px_1.7109px_1.7109px_#E9E9E9] rounded-[42px]'>
                 <img src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/random/v1mcIe7iYXd80obyy2mq1670497753.svg" className='absolute top-[13px] left-[13px]' alt="" />
-                <input value={searchKeyword} onChange={ (e) => searchHandler(e.target.value) } className='text-[400] pl-[40px] rounded-[42px] h-full w-full text-[16px] leading-[19px] text-[#6D6E6F] outline-none border-none ' type="text" />
+                <input value={searchKeyword} placeholder='Search' onChange={ (e) => searchHandler(e.target.value) } className='text-[400] pl-[40px] rounded-[42px] h-full w-full text-[16px] leading-[19px] text-[#6D6E6F] outline-none border-none ' type="text" />
 
             </div>
             <div className='switch flex gap-[13px] '>
