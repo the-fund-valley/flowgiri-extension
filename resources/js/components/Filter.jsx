@@ -3,7 +3,7 @@ import { NavigationsButtons } from '../data/data.js'
 import { useRecoilState } from 'recoil';
 import { activeButtonState, activeCategoryState, contentFreeState, searchKeywordState } from '../state/State.js';
 import { debounce } from '../helper/helper.js';
-import { getSearchData } from '../Request/api.js';
+import { getAndSetThemesDataToState, getSearchData } from '../Request/api.js';
 
 function Filter() {
 
@@ -25,6 +25,7 @@ function Filter() {
 
     const selectTab = (item) => {
         setActiveButton(item)
+        getAndSetThemesDataToState()
     }
 
     useEffect(()=>{
@@ -36,8 +37,6 @@ function Filter() {
         setActiveCategory(activeButton.id)
 
     },[activeButton])
-
-
 
     const toggleFreeAndPro = () => {
         setContentFree(!contentFree)

@@ -1,20 +1,57 @@
-import React from 'react'
-import Filter from './components/Filter.jsx'
-import FlowContents from './components/FlowContents.jsx'
+import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+import Filter from "./components/Filter.jsx";
+import FlowContents from "./components/FlowContents.jsx";
 
-import Navbar from './components/Navbar.jsx'
+import Navbar from "./components/Navbar.jsx";
+import { getAndSetThemesDataToState } from "./Request/api.js";
+import { activeCategoryState } from "./state/State.js";
 
 function Main() {
+  const [extensionIsOn, setExtensionIsOn] = useState(true);
+  const activeCategory = useRecoilValue(activeCategoryState)
+
+  useEffect(()=>{
+    getAndSetThemesDataToState()
+  },[])
+
+
+
+
+
   return (
-    <div className='bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px] left-[35px] h-[100vh] w-[833px]'>
-        <Navbar/>
+    <>
+      <div
+        onClick={() => setExtensionIsOn(!extensionIsOn)}
+        class="flowgiri-icon-area"
+        style={{
+          width: "40px",
+          height: "40px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img
+          src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/random/JtgY2zFvBX70iHBjDtGk1669292780.svg"
+          alt=""
+        />
+      </div>
+      <div>
+      {extensionIsOn && (
+        <div className="bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px] left-[35px] h-[100vh] w-[833px]">
+          <Navbar />
 
-        <Filter/>
+          <Filter />
 
-        <FlowContents/>
+          <FlowContents />
+        </div>
+      )}
+      </div>
 
-    </div>
-  )
+
+    </>
+  );
 }
 
-export default Main
+export default Main;

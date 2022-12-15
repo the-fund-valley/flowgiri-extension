@@ -13,11 +13,6 @@ function FlowContents() {
   const activeCategory = useRecoilValue(activeCategoryState)
 
   useEffect(()=>{
-    getAndSetThemesDataToState()
-  },[])
-
-
-  useEffect(()=>{
     getAndSetThemeDataToState()
   },[activeCategory])
 

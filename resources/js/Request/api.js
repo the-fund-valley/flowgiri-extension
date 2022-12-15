@@ -19,6 +19,11 @@ import {
 import { request } from "./";
 
 export const getAndSetThemesDataToState = async () => {
+
+  if(getRecoil(ThemesState).length > 0 && getRecoil(pagesCatagoriesState).length > 0 && getRecoil(sectionsCatagoriesState).length > 0){
+    return
+  }
+
   const receivedData = await request.getAll("api/get-all-theme");
   const templateCatagories = await request.getAll(
     "api/get-all-theme-templates-category"
@@ -35,18 +40,22 @@ export const getAndSetThemesDataToState = async () => {
 };
 
 export const getAndSetThemeDataToState = async (id) => {
+
   let receivedData;
-  let sectionsLength = getRecoil(SectionsState).length;
-  let templatesLength = getRecoil(TemplatesState).length;
 
   const params = {};
 
   if (getRecoil(activeCategoryState) === "templates") {
-    setRecoil(TemplatesState, []);
+
     if (id) {
       params["theme_id"] = id;
     }
+    if(getRecoil(TemplatesState).length > 0) {
+
+      return
+    }
     receivedData = await request.get("api/theme-templates?", params);
+
     if (!receivedData.data.length) {
       setRecoil(noTemplateState, true);
     } else {
@@ -55,9 +64,14 @@ export const getAndSetThemeDataToState = async (id) => {
 
     setRecoil(TemplatesState, receivedData.data);
   } else if (getRecoil(activeCategoryState) === "sections") {
-    setRecoil(SectionsState, []);
+
     if (id) {
       params["category_id"] = id;
+    }
+
+    if(getRecoil(SectionsState).length > 0) {
+
+      return
     }
     receivedData = await request.get("api/theme-sections?", params);
 
@@ -69,11 +83,14 @@ export const getAndSetThemeDataToState = async (id) => {
 
     setRecoil(SectionsState, receivedData.data);
   } else if (getRecoil(activeCategoryState) === "pages") {
-    setRecoil(pagesState, []);
+
     if (id) {
       params["category_id"] = id;
     }
+    if(getRecoil(pagesState).length > 0) {
 
+      return
+    }
     receivedData = await request.get("api/theme-templates?", params);
 
     if (!receivedData.data.length) {

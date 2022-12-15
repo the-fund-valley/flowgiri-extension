@@ -7,7 +7,7 @@ import { RecoilRoot, } from 'recoil';
 window.React = React
 export default function App() {
 
-    const [extensionIsOn, setExtensionIsOn] = useState(false)
+    const [extensionIsOn, setExtensionIsOn] = useState(true)
 
 
     // useEffect(()=> {
@@ -29,10 +29,7 @@ export default function App() {
     return (
         <RecoilRoot>
             <RecoilNexus />
-            <div onClick={ ()=> setExtensionIsOn(!extensionIsOn) } class='flowgiri-icon-area'  style={{width:'40px',height:'40px',display:'flex',justifyContent:'center', alignItems:'center'}}>
-              <img   src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/random/JtgY2zFvBX70iHBjDtGk1669292780.svg" alt="" />
-           </div>
-             {extensionIsOn &&   <Main />}
+              <Main />
 
         </RecoilRoot>
 
