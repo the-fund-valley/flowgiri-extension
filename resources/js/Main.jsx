@@ -8,16 +8,25 @@ import { getAndSetThemesDataToState } from "./Request/api.js";
 import { activeCategoryState } from "./state/State.js";
 
 function Main() {
-  const [extensionIsOn, setExtensionIsOn] = useState(true);
-  const activeCategory = useRecoilValue(activeCategoryState)
+  const [extensionIsOn, setExtensionIsOn] = useState(false);
+  const activeCategory = useRecoilValue(activeCategoryState);
 
-  useEffect(()=>{
-    getAndSetThemesDataToState()
-  },[])
+  useEffect(() => {
+    getAndSetThemesDataToState();
+  }, []);
 
+  // useEffect(()=> {
 
+  //     document.addEventListener('click', function(event) {
+  //         const isOutside = event.target.closest('.flowgiri-applicaiton');
 
+  //         if(!isOutside && extensionIsOn)  setExtensionIsOn(false)
 
+  //         if(!isOutside && !extensionIsOn)   setExtensionIsOn(true)
+
+  //       })
+
+  // },[extensionIsOn])
 
   return (
     <>
@@ -38,18 +47,16 @@ function Main() {
         />
       </div>
       <div>
-      {extensionIsOn && (
-        <div className="bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px] left-[35px] h-[100vh] w-[833px]">
-          <Navbar />
+        {extensionIsOn && (
+          <div className="bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px] left-[35px] h-[100vh] w-[833px]">
+            <Navbar />
 
-          <Filter />
+            <Filter />
 
-          <FlowContents />
-        </div>
-      )}
+            <FlowContents />
+          </div>
+        )}
       </div>
-
-
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React,{useEffect} from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { activeButtonState, activeThemeState, ThemesState } from "../state/State";
-import { getAndSetThemeDataToState } from './../Request/api';
+import { getAndSetThemeCategoryDataToState, getAndSetThemeDataToState } from './../Request/api';
 
 
 function Sidebar({catagories, setter,activeCategory}) {
@@ -16,14 +16,14 @@ function Sidebar({catagories, setter,activeCategory}) {
       return
     }
     setter(item)
-    getAndSetThemeDataToState(item.id)
+    getAndSetThemeCategoryDataToState(item.id)
   }
 
 
   return (
     <div>
       <div className="content-catagory-list px-[3px]  mt-[12px] gap-[10px] flex-col flex   rounded-[10px] h-auto w-[190px] pb-[20px]">
-       <div  onClick={()=> selectCategory()} className={activeCategory.id ?'pl-[20px] flex justify-between cursor-pointer py-[7px] gap-[16px]' : 'pl-[17px] py-[7px] gap-[12px] border-box flex justify-between cursor-pointer  border-l-[3px] border-solid border-[#5E5DF0]'}>
+       <div  onClick={()=> selectCategory()} className={activeCategory.id ?'pl-[10px] flex justify-between cursor-pointer py-[7px] gap-[16px] pr-[7px] ' : 'pl-[7px] pr-[7px] py-[7px] gap-[12px] border-box flex justify-between cursor-pointer  border-l-[3px] border-solid border-[#5E5DF0]'}>
               <p className={!activeCategory.id ? ' text-[16px] font-bold text-[#5E5DF0]  leading-[16px] ':'text-[16px] font-medium text-[#585858] leading-[16px] '}>
                 All {activeButton.name}
               </p>
@@ -35,13 +35,13 @@ function Sidebar({catagories, setter,activeCategory}) {
         {catagories.map((item, i) => {
           // active-section-border
           return (
-            <div onClick={()=> selectCategory(item)} key={i} className={activeCategory.id !== item.id ?'pl-[20px] flex justify-between cursor-pointer py-[7px] gap-[16px]' : 'pl-[17px] py-[7px] gap-[12px] border-box flex justify-between cursor-pointer  border-l-[3px] border-solid border-[#5E5DF0]'}>
+            <div onClick={()=> selectCategory(item)} key={i} className={activeCategory.id !== item.id ?'pl-[10px] flex justify-between cursor-pointer py-[7px] gap-[16px] pr-[7px] ' : 'pl-[7px] pr-[7px]  py-[7px] gap-[12px] border-box flex justify-between cursor-pointer  border-l-[3px] border-solid border-[#5E5DF0]'}>
               <p  className={activeCategory.id === item.id ? 'text-[16px] whitespace-nowrap font-bold text-[#5E5DF0] leading-[16px] ':'text-[16px] whitespace-nowrap font-medium text-[#585858] leading-[16px] '}>
                 {item.name}
               </p>
               <span className=" text-[16px] font-[400] text-[#585858] leading-[16px] ">
                 {/* (130) */}
-                {item.count && item.count}
+                {item.total_count && item.total_count}
               </span>
             </div>
           );
