@@ -95,7 +95,7 @@ export const getAndSetThemeCategoryDataToState = async (id) => {
   const params = {};
 
   if (getRecoil(activeCategoryState) === "templates") {
-
+    setRecoil(TemplatesState, []);
     if (id) {
       params["theme_id"] = id;
     }
@@ -110,7 +110,7 @@ export const getAndSetThemeCategoryDataToState = async (id) => {
 
     setRecoil(TemplatesState, receivedData.data);
   } else if (getRecoil(activeCategoryState) === "sections") {
-
+    setRecoil(SectionsState, []);
     if (id) {
       params["category_id"] = id;
     }
@@ -126,7 +126,7 @@ export const getAndSetThemeCategoryDataToState = async (id) => {
 
     setRecoil(SectionsState, receivedData.data);
   } else if (getRecoil(activeCategoryState) === "pages") {
-
+    setRecoil(pagesState, []);
     if (id) {
       params["category_id"] = id;
     }
@@ -168,6 +168,8 @@ export const getSearchData = async () => {
   }
 
   if (getRecoil(activeCategoryState) === "templates") {
+    setRecoil(TemplatesState, []);
+
     let id = getRecoil(activeThemeState)?.id;
 
     if (id) {
@@ -183,6 +185,8 @@ export const getSearchData = async () => {
 
     setRecoil(TemplatesState, receivedData.data);
   } else if (getRecoil(activeCategoryState) === "sections") {
+    setRecoil(SectionsState, []);
+
     if (activeSectionCategory.id) {
       params["category_id"] = activeSectionCategory.id;
     }
@@ -195,6 +199,7 @@ export const getSearchData = async () => {
     }
     setRecoil(SectionsState, receivedData.data);
   } else if (getRecoil(activeCategoryState) === "pages") {
+    setRecoil(pagesState, []);
     if (activePageCategory.id) {
       params["category_id"] = activePageCategory.id;
     }

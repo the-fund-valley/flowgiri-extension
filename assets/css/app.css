@@ -1323,6 +1323,9 @@ video {
 .leading-\[16px\]{
   line-height: 16px;
 }
+.leading-\[14px\]{
+  line-height: 14px;
+}
 .text-\[\#fff\]{
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));

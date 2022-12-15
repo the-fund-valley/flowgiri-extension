@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React,{useEffect, useState} from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { activeButtonState, activeThemeState, ThemesState } from "../state/State";
 import { getAndSetThemeCategoryDataToState, getAndSetThemeDataToState } from './../Request/api';
@@ -7,6 +7,7 @@ import { getAndSetThemeCategoryDataToState, getAndSetThemeDataToState } from './
 function Sidebar({catagories, setter,activeCategory}) {
   const [activeTheme, setActiveTheme] = useRecoilState(activeThemeState)
   const [activeButton, setActiveButton] = useRecoilState(activeButtonState)
+  const [totalCount, setTotalCount] = useState(0)
 
   const selectCategory = (item) => {
 
@@ -19,16 +20,25 @@ function Sidebar({catagories, setter,activeCategory}) {
     getAndSetThemeCategoryDataToState(item.id)
   }
 
+  useEffect(()=>{
+    let count = 0;
+    catagories.forEach((item)=>{
+        count += item.total_count
+    })
+
+   setTotalCount(count)
+  },[])
+
 
   return (
     <div>
       <div className="content-catagory-list px-[3px]  mt-[12px] gap-[10px] flex-col flex   rounded-[10px] h-auto w-[190px] pb-[20px]">
        <div  onClick={()=> selectCategory()} className={activeCategory.id ?'pl-[10px] flex justify-between cursor-pointer py-[7px] gap-[16px] pr-[7px] ' : 'pl-[7px] pr-[7px] py-[7px] gap-[12px] border-box flex justify-between cursor-pointer  border-l-[3px] border-solid border-[#5E5DF0]'}>
-              <p className={!activeCategory.id ? ' text-[16px] font-bold text-[#5E5DF0]  leading-[16px] ':'text-[16px] font-medium text-[#585858] leading-[16px] '}>
+              <p className={!activeCategory.id ? ' text-[14px] font-bold text-[#5E5DF0]  leading-[14px] ':'text-[14px] font-medium text-[#585858] leading-[14px] '}>
                 All {activeButton.name}
               </p>
-              <span className=" text-[16px] font-[400] text-[#585858] leading-[16px] ">
-                {/* (130) */}
+              <span className=" text-[14px] font-[400] text-[#585858] leading-[14px] ">
+              {totalCount}
 
               </span>
          </div>
@@ -36,7 +46,7 @@ function Sidebar({catagories, setter,activeCategory}) {
           // active-section-border
           return (
             <div onClick={()=> selectCategory(item)} key={i} className={activeCategory.id !== item.id ?'pl-[10px] flex justify-between cursor-pointer py-[7px] gap-[16px] pr-[7px] ' : 'pl-[7px] pr-[7px]  py-[7px] gap-[12px] border-box flex justify-between cursor-pointer  border-l-[3px] border-solid border-[#5E5DF0]'}>
-              <p  className={activeCategory.id === item.id ? 'text-[16px] whitespace-nowrap font-bold text-[#5E5DF0] leading-[16px] ':'text-[16px] whitespace-nowrap font-medium text-[#585858] leading-[16px] '}>
+              <p  className={activeCategory.id === item.id ? 'text-[14px] whitespace-nowrap font-bold text-[#5E5DF0] leading-[16px] ':'text-[14px] whitespace-nowrap font-medium text-[#585858] leading-[16px] '}>
                 {item.name}
               </p>
               <span className=" text-[16px] font-[400] text-[#585858] leading-[16px] ">
