@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { componentData } from "../data/data";
 import { request } from "../Request";
 import { getRecoil } from 'recoil-nexus';
 import { activeButtonState, activeCategoryState } from "../state/State";
-import { getCode } from "../Request/api";
 
 function ContentCard({ key, item }) {
   const [codeCopied, setCodeCopied] = useState(false);
