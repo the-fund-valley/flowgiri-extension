@@ -16,7 +16,6 @@ export default function App() {
         <RecoilRoot>
             <RecoilNexus />
               <Main />
-
         </RecoilRoot>
 
 

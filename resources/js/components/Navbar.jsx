@@ -5,13 +5,13 @@ function Navbar() {
         <nav class="bg-[#212121] px-2 sm:px-4 py-2.5 dark:bg-gray-900 max-w-[833px]  w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
             <div class="container flex items-center justify-between mx-auto">
                 <div className='flex'>
-                    <a href="/" class="flex items-center text-[19px] leading-[12px] font-[900] text-[#fff]">
+                    <a href="https://flowgiri.com" class="flex items-center text-[19px] leading-[12px] font-[900] text-[#fff]">
                         Flowgiri
 
                     </a>
                     <ul class=" flex ml-[80px] gap-[30px]">
                         <li>
-                            <a href="#" class="font-bold text-[14px] leading-[12px] text-[#FFFFFF] opacity-50" >Resources</a>
+                            {/* <a href="#" class="font-bold text-[14px] leading-[12px] text-[#FFFFFF] opacity-50" >Resources</a> */}
                         </li>
                         <li>
                             {/* <a href="#" class="font-bold text-[14px] leading-[12px] text-[#FFFFFF] opacity-50">Tutorials</a> */}
@@ -22,11 +22,11 @@ function Navbar() {
 
                 <div class="flex gap-[30px] items-center justify-center">
 
-                    <a href="" class="font-bold text-[14px] leading-[12px] text-[#FFFFFF] opacity-50" >
+                    <a target='_blank' href="https://flowgiri.com/pricing" class="font-bold text-[14px] leading-[12px] text-[#FFFFFF] opacity-50" >
                         Pricing
                     </a>
 
-                    <a href="" className='py-[6px] text-[#fff] px-[20px] shadow-[0px-4px_20px_-10px_#6E79D6] rounded-[999px] bg-[#5E5DF0]' >
+                    <a target='_blank' href="https://flowgiri.com/login" className='py-[6px] text-[#fff] px-[20px] shadow-[0px-4px_20px_-10px_#6E79D6] rounded-[999px] bg-[#5E5DF0]' >
                         Login
                     </a>
 
