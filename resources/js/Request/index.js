@@ -18,23 +18,19 @@ request.get = async (path, params) => {
 
 request.post = async (path,params) => {
 
+    console.log(params)
 
     const ProjectRequestOptions = {
         method: 'POST',
-        body: params
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(params)
     };
 
     let response = await fetch(baseURL + path ,ProjectRequestOptions)
-    let result = await response.json()
-
-    // if (response.status === 200 || response.status === 201 ) {
-    //     console.log("counted")
-    //     return  await response.json();
-    // } else {
-    //     console.log("didn't count")
-    // }
-
-    return false;
+    let result = await response.json();
+    return result
 }
 
 

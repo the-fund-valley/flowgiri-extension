@@ -14,13 +14,14 @@ function FlowGiriInit() {
     }
 }
 
-setTimeout(function (){
-    let div = '<div id="flowGiriApp"> </div>';
 
-    $(".left-sidebar-links").append(div);
+    setTimeout(function (){
+        let div = '<div id="flowGiriApp"> </div>';
 
-    FlowGiriInit();
+        $(".left-sidebar-links").append(div);
 
-}, 3000)
+        FlowGiriInit();
+
+    }, 4000)
 
 
