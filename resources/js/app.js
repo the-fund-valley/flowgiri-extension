@@ -14,6 +14,8 @@ function FlowGiriInit() {
     }
 }
 
+alert('kokok')
+
     setTimeout(function (){
         let div = '<div id="flowGiriApp"> </div>';
 

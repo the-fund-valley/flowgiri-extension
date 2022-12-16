@@ -10,8 +10,6 @@ export default function App() {
     const [extensionIsOn, setExtensionIsOn] = useState(true)
 
 
-
-
     return (
         <RecoilRoot>
             <RecoilNexus />
