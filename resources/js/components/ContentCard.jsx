@@ -2,21 +2,50 @@ import React, { useState } from "react";
 import { componentData } from "../data/data";
 import { request } from "../Request";
 import { getRecoil } from 'recoil-nexus';
-import { activeButtonState } from "../state/State";
+import { activeButtonState, activeCategoryState } from "../state/State";
+import { getCode } from "../Request/api";
 
 function ContentCard({ key, item }) {
   const [codeCopied, setCodeCopied] = useState(false);
+  const [copying, setCopying] = useState(false)
   const [upgradePlan, setUpgradePlan] = useState(false)
 
   const copyToClipBoard = async () => {
+
+    setCopying(true)
 
     if (item.is_pro === "true") {
       setUpgradePlan(true);
       return
     }
 
+    const params = {}
+
+    if(item.id){
+      params.id = item.id
+    }
+
+    if(getRecoil(activeCategoryState) === "templates"){
+      params.type = 'template'
+    } else if(getRecoil(activeCategoryState) === "sections"){
+      params.type = 'component'
+    }
+
+    const response = await request.post('api/get-code',params);
+
+    setCopying(false)
+
+    if(!response.code){
+
+      console.log('no code found to copy')
+      return
+    }
+
+
+    setCopying(false)
+
     function listener(evt) {
-      evt.clipboardData.setData("application/json", item.component_code.code);
+      evt.clipboardData.setData("application/json", response.code);
       evt.preventDefault();
     }
 
@@ -25,10 +54,7 @@ function ContentCard({ key, item }) {
     document.removeEventListener("copy", listener);
     setCodeCopied(true)
     countCopyHandler()
-    // webToast.Success({
-    //   status: "Success !",
-    //   message: "Copied to clipboard"
-    // });
+
   };
 
   const countCopyHandler = () =>  {
@@ -78,7 +104,14 @@ function ContentCard({ key, item }) {
               fill="#181818"
             />
           </svg>
-          {codeCopied ? "Copied" : "Copy"}
+
+          {
+            codeCopied ? "Copied" : (<>
+              {
+                copying ? 'Copying...' : 'copy'
+              }
+            </>)
+          }
         </button>
 
         <button className="ml-2 rounded-md p-3 shadow-template-card-two  bg-[#fff]">

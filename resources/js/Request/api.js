@@ -281,3 +281,4 @@ export const fetchMoreData = async (nextPage, setNextPage, setHasMore) => {
   setNextPage((oldState) => oldState + 1);
   if (receivedData.data.length < 2) setHasMore(false);
 };
+
