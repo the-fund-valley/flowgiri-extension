@@ -8,25 +8,25 @@ import { getAndSetThemesDataToState } from "./Request/api.js";
 import { activeCategoryState } from "./state/State.js";
 
 function Main() {
-  const [extensionIsOn, setExtensionIsOn] = useState(true);
+  const [extensionIsOn, setExtensionIsOn] = useState(false);
   const activeCategory = useRecoilValue(activeCategoryState);
 
   useEffect(() => {
     getAndSetThemesDataToState();
   }, []);
 
-  // useEffect(()=> {
+  useEffect(()=> {
 
-  //     document.addEventListener('click', function(event) {
-  //         const isOutside = event.target.closest('.flowgiri-applicaiton');
+      document.addEventListener('click', function(event) {
+          const isOutside = event.target.closest('.flowgiri-applicaiton');
 
-  //         if(!isOutside && extensionIsOn)  setExtensionIsOn(false)
+          if(!isOutside && extensionIsOn)  setExtensionIsOn(false)
 
-  //         if(!isOutside && !extensionIsOn)   setExtensionIsOn(true)
+          if(!isOutside && !extensionIsOn)   setExtensionIsOn(true)
 
-  //       })
+        })
 
-  // },[extensionIsOn])
+  },[extensionIsOn])
 
   return (
     <>

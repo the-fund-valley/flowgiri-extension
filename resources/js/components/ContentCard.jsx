@@ -4,6 +4,7 @@ import { getRecoil } from 'recoil-nexus';
 import { activeButtonState, activeCategoryState } from "../state/State";
 
 function ContentCard({ key, item }) {
+
   const [codeCopied, setCodeCopied] = useState(false);
   const [copying, setCopying] = useState(false)
   const [upgradePlan, setUpgradePlan] = useState(false)
