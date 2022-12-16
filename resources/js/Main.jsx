@@ -15,18 +15,18 @@ function Main() {
     getAndSetThemesDataToState();
   }, []);
 
-  useEffect(()=> {
+  // useEffect(()=> {
 
-      document.addEventListener('click', function(event) {
-          const isOutside = event.target.closest('.flowgiri-applicaiton');
+  //     document.addEventListener('click', function(event) {
+  //         const isOutside = event.target.closest('.flowgiri-applicaiton');
 
-          if(!isOutside && extensionIsOn)  setExtensionIsOn(false)
+  //         if(!isOutside && extensionIsOn)  setExtensionIsOn(false)
 
-          if(!isOutside && !extensionIsOn)   setExtensionIsOn(true)
+  //         if(!isOutside && !extensionIsOn)   setExtensionIsOn(true)
 
-        })
+  //       })
 
-  },[extensionIsOn])
+  // },[extensionIsOn])
 
   return (
     <>
