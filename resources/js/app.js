@@ -14,15 +14,13 @@ function FlowGiriInit() {
     }
 }
 
-alert('kokok')
+setTimeout(function (){
+    let div = '<div id="flowGiriApp"> </div>';
 
-    setTimeout(function (){
-        let div = '<div id="flowGiriApp"> </div>';
+    $(".left-sidebar-links").append(div);
 
-        $(".left-sidebar-links").append(div);
+    FlowGiriInit();
 
-        FlowGiriInit();
-
-    }, 3000)
+}, 3000)
 
 
