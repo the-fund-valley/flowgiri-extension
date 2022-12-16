@@ -42,7 +42,8 @@ function Main() {
         }}
       >
         <img
-          src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/random/JtgY2zFvBX70iHBjDtGk1669292780.svg"
+        class='w-[20px] h-[20px]'
+          src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/random/uOp84rUFp0BqibMSQE891671105367.svg"
           alt=""
         />
       </div>
