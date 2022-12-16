@@ -112,7 +112,7 @@ function ContentCard({ key, item }) {
           </svg>
           <span className="font-medium text-[12px] text-[#191919] leading-[18px]">
             Get access to all resources,{" "}
-            <a target="_blank" className="text-[#5E5DF0] underline" href="/">
+            <a target="_blank" className="text-[#5E5DF0] underline" href="https://flowgiri.com/pricing">
               upgrade
             </a>{" "}
             your plan
