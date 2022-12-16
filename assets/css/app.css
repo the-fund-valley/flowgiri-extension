@@ -1230,9 +1230,6 @@ video {
 .pb-\[20px\]{
   padding-bottom: 20px;
 }
-.pl-\[17px\]{
-  padding-left: 17px;
-}
 .pl-\[10px\]{
   padding-left: 10px;
 }
@@ -1320,11 +1317,11 @@ video {
 .leading-\[19px\]{
   line-height: 19px;
 }
-.leading-\[16px\]{
-  line-height: 16px;
-}
 .leading-\[14px\]{
   line-height: 14px;
+}
+.leading-\[16px\]{
+  line-height: 16px;
 }
 .text-\[\#fff\]{
   --tw-text-opacity: 1;
