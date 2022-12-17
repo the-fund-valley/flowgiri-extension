@@ -123,6 +123,7 @@ function ContentCard({ i, item }) {
       <div className="mt-4 flex items-center justify-center ">
         <button
           onClick={copyToClipBoard}
+          disabled={copying}
           className=" btn-img-scroll bg-[#fff] relative min-w-[206px] flex justify-center cursor-pointer rounded-md py-3  text-center text-sm font-bold leading-[15px] shadow-template-card transition-all delay-100 ease-in-out  hover:transition-all border-[1px] border-solid border-[rgba(41,45,50,0.1)] shadow-[0px_1.7109px_10.2654px_-4.37302px_#FFFFFF] text-[#191919]"
         >
           <svg

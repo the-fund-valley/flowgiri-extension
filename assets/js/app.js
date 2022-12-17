@@ -867,6 +867,7 @@ function ContentCard(_ref) {
     className: "mt-4 flex items-center justify-center "
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: copyToClipBoard,
+    disabled: copying,
     className: " btn-img-scroll bg-[#fff] relative min-w-[206px] flex justify-center cursor-pointer rounded-md py-3  text-center text-sm font-bold leading-[15px] shadow-template-card transition-all delay-100 ease-in-out  hover:transition-all border-[1px] border-solid border-[rgba(41,45,50,0.1)] shadow-[0px_1.7109px_10.2654px_-4.37302px_#FFFFFF] text-[#191919]"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
     className: "left-[12px] absolute",
