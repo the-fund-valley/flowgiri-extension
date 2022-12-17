@@ -13,38 +13,34 @@ function Main() {
 
   useEffect(() => {
     getAndSetThemesDataToState();
-  }, []);
 
+
+      window.addEventListener("message", (event) => {
+
+          if (event.data.author === 'besnik-flowgiri-app-toggle'){
+              setExtensionIsOn(event.data.toggle)
+          }
+
+    }, false);
+
+
+  }, []);
 
 
   return (
     <>
-      <div
-        onClick={() => setExtensionIsOn(!extensionIsOn)}
-        class="flowgiri-icon-area"
-        style={{
-          width: "40px",
-          height: "40px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <img
-        class='w-[20px] h-[20px]'
-          src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/random/uOp84rUFp0BqibMSQE891671105367.svg"
-          alt=""
-        />
-      </div>
-      <div>
+      <div  id='flowgiri-app-container'>
         {extensionIsOn && (
-          <div className="bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px] left-[35px] h-[100vh] w-[833px]">
+            <>
+         <div id='flowgiri-app-bg' className='z-[99]  fixed top-0 bottom-0 right-0 left-[33px] bg-[rgba(0,0,0,.2)]'></div>
+          <div className="z-[9999] bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px] left-[35px] h-[100vh] w-[833px]">
             <Navbar />
 
             <Filter />
 
             <FlowContents />
           </div>
+            </>
         )}
       </div>
     </>

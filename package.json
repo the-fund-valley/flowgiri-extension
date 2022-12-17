@@ -5,7 +5,7 @@
   "scripts": {
     "tail": "tailwindcss -i ./resources/css/app.css -o ./assets/css/app.css --watch",
     "dev": "webpack --mode development",
-    "watch": "webpack --mode production --watch",
+    "watch": "webpack --mode development --watch",
     "build": "webpack --mode production"
   },
   "author": "",

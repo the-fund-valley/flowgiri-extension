@@ -1,4 +1,4 @@
-import { baseURL } from "../constants";
+import {baseURL} from "../constants";
 
 
 export const request = {};
@@ -29,8 +29,7 @@ request.post = async (path,params) => {
     };
 
     let response = await fetch(baseURL + path ,ProjectRequestOptions)
-    let result = await response.json();
-    return result
+    return await response.json()
 }
 
 
