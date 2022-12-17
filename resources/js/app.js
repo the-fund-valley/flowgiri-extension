@@ -14,14 +14,108 @@ function FlowGiriInit() {
     }
 }
 
+function addSideNav() {
+    let flowgiriNav = ` <div 
+        class="flowgiri-icon-area"
+        style="
+          width: 40px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer
+        "
+      >
+        <img
+        class='w-[20px] h-[20px]'
+          src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/random/uOp84rUFp0BqibMSQE891671105367.svg"
+          alt=""
+        />
+      </div>`
 
-    setTimeout(function (){
+    $(".left-sidebar-links").append(flowgiriNav)
+}
+
+let FlowGiriAppInterval = null;
+
+function tryInitApp() {
+
+    if ($(".left-sidebar-links").length && !$('body').find('.flowgiri-icon-area').length) {
+        clearTimeout(FlowGiriAppInterval)
+        addSideNav()
+    }
+
+}
+
+$(document).ready(function () {
+
+    setTimeout(function () {
+
         let div = '<div id="flowGiriApp"> </div>';
 
-        $(".left-sidebar-links").append(div);
+        setTimeout(() => {
+            $("body").append(div);
 
-        FlowGiriInit();
+            FlowGiriInit();
+        }, 300)
 
-    }, 4000)
+    }, 1000)
+
+
+    $('body').on('click', ".left-sidebar-links", function () {
+        FlowGiriAppInterval = setInterval(tryInitApp, 100)
+    });
+
+    let toggleAPp = false;
+
+    $('body').on('click', ".flowgiri-icon-area", function () {
+
+        toggleAPp = !toggleAPp;
+
+        postMessage({
+            author: 'besnik-flowgiri-app-toggle',
+            toggle: toggleAPp
+        }, '*')
+
+    });
+
+
+    document.addEventListener('click', function(event) {
+          const isOutside = $(event.target).closest('#flowgiri-app-container');
+
+         if(!isOutside.length && toggleAPp && !$(event.target).closest('.flowgiri-icon-area').length) {
+             postMessage({
+                 author: 'besnik-flowgiri-app-toggle',
+                 toggle: false
+             }, '*')
+
+             toggleAPp = false ;
+         }
+
+    })
+
+
+    $("body").on('click', '#flowgiri-app-bg', function () {
+        postMessage({
+            author: 'besnik-flowgiri-app-toggle',
+            toggle: false
+        }, '*')
+        toggleAPp = false ;
+    })
+
+
+    // $("body").on('click', 'div[data-automation-id="left-sidebar-add-button"]', function () {
+    //     alert("oko")
+    // })
+
+})
+
+
+FlowGiriAppInterval = setInterval(tryInitApp, 100)
+
+
+
+
+
 
 

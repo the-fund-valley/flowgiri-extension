@@ -30,7 +30,7 @@ function ContentCard({ key, item }) {
       params.type = 'component'
     }
 
-    const response = await request.post('api/get-code',params);
+    const response = await request.post('get-code', params);
 
     setCopying(false)
 
