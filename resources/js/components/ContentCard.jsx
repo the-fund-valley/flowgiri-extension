@@ -5,7 +5,7 @@ import { activeButtonState, activeCategoryState, codeStorageState } from "../sta
 import { setRecoil } from 'recoil-nexus';
 import { useRecoilValue } from "recoil";
 
-function ContentCard({ key, item }) {
+function ContentCard({ i, item }) {
 
   const [codeCopied, setCodeCopied] = useState(false);
   const [copying, setCopying] = useState(false)
@@ -105,12 +105,12 @@ function ContentCard({ key, item }) {
     let activeBtn = getRecoil(activeButtonState)
     if(activeBtn.id === 'templates')  params.type = 'template'
     else if(activeBtn.id === 'sections')  params.type = 'component'
-    const response = request.post('api/product-copy-count',params);
+    const response = request.post('api/product-copy-count', params);
   }
 
   return (
     <div
-      key={key}
+      key={i}
       className="rounded-[14px] relative image-card group  bg-[#fff] shadow-[0px_0.855451px_0.855451px_#E9E9E9] px-[14px] pt-[14px] pb-[15px]"
     >
       <div className="rounded-xl overflow-hidden max-h-[215px] card__image bg-[#E8E9EB] px-6 pt-6">

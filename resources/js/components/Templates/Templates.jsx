@@ -47,7 +47,7 @@ function Templates() {
                 }
               >
                 {templates.map((item, i) => {
-                  return <ContentCard item={item} key={i} />;
+                  return <ContentCard item={item} i={i} />;
                 })}
               </div>
             </InfiniteScroll>
@@ -63,8 +63,8 @@ function Templates() {
                   "content-card-container grid  pr-[7px]  gap-[18px] px-[0px] pb-8 flex grid-cols-1 md:grid-cols-2 max-h-[80vh] overflow-auto "
                 }
               >
-                {[1, 2, 3, 4, 5, 6].map(() => {
-                  return <SkeletonCard />;
+                 {[1, 2, 3, 4, 5, 6].map((_,i) => {
+                  return <SkeletonCard  i={i}/>;
                 })}
               </div>
             )}

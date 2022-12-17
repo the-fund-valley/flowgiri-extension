@@ -1,8 +1,8 @@
 import React from 'react'
 
-function SkeletonCard() {
+function SkeletonCard({i}) {
   return (
-    <div className="card-flowgiri">
+    <div key={i} className="card-flowgiri">
     <div className="card__image-flowgiri"></div>
     <div className="card__content-flowgiri">
       <h2 className='h2-flowgiri'></h2>
