@@ -1,17 +1,34 @@
 import React, { useState } from "react";
 import { request } from "../Request";
 import { getRecoil } from 'recoil-nexus';
-import { activeButtonState, activeCategoryState } from "../state/State";
+import { activeButtonState, activeCategoryState, codeStorageState } from "../state/State";
+import { setRecoil } from 'recoil-nexus';
+import { useRecoilValue } from "recoil";
 
 function ContentCard({ key, item }) {
 
   const [codeCopied, setCodeCopied] = useState(false);
   const [copying, setCopying] = useState(false)
-  const [upgradePlan, setUpgradePlan] = useState(false)
+  const [upgradePlan, setUpgradePlan] = useState(false);
+  const sectionsCode = useRecoilValue(codeStorageState).sectionStorage
+  const templatesCode = useRecoilValue(codeStorageState).templateStorage
 
   const copyToClipBoard = async () => {
 
-    setCopying(true)
+    setCopying(true);
+
+    if(getRecoil(activeCategoryState) === "templates"){
+      if(templatesCode[item.id]){
+        copyEventHandler(templatesCode[item.id])
+        return
+      }
+
+    } else if(getRecoil(activeCategoryState) === "sections"){
+      if(sectionsCode[item.id]){
+        copyEventHandler(sectionsCode[item.id])
+        return
+      }
+    }
 
     if (item.is_pro === "true") {
       setUpgradePlan(true);
@@ -30,21 +47,38 @@ function ContentCard({ key, item }) {
       params.type = 'component'
     }
 
-    const response = await request.post('get-code', params);
+    const response = await request.post('api/get-code', params);
 
-    setCopying(false)
-
-    if(!response.code){
-
-      console.log('no code found to copy')
-      return
+    if(getRecoil(activeCategoryState) === "templates"){
+      setRecoil(codeStorageState,(oldState)=>{
+        return {
+          ...oldState,templateStorage:{...oldState['templateStorage'], [item.id] : response.code}
+        }
+      })
+    } else if(getRecoil(activeCategoryState) === "sections"){
+      setRecoil(codeStorageState,(oldState)=>{
+        return {
+          ...oldState,sectionStorage:{...oldState['sectionStorage'], [item.id] : response.code}
+        }
+      })
     }
 
 
     setCopying(false)
 
+    if(!response.code){
+      console.log('no code found to copy')
+      return
+    }
+    copyEventHandler(response.code)
+
+  };
+
+  const copyEventHandler = (code) => {
+    setCopying(false)
+
     function listener(evt) {
-      evt.clipboardData.setData("application/json", response.code);
+      evt.clipboardData.setData("application/json", code);
       evt.preventDefault();
     }
 
@@ -52,9 +86,18 @@ function ContentCard({ key, item }) {
     document.execCommand("copy");
     document.removeEventListener("copy", listener);
     setCodeCopied(true)
+
+    setTimeout(() => {
+      setCodeCopied(false)
+    }, 3000);
+
+    setCopying(false);
     countCopyHandler()
 
-  };
+  }
+
+
+
 
   const countCopyHandler = () =>  {
     let params = {}
@@ -62,9 +105,7 @@ function ContentCard({ key, item }) {
     let activeBtn = getRecoil(activeButtonState)
     if(activeBtn.id === 'templates')  params.type = 'template'
     else if(activeBtn.id === 'sections')  params.type = 'component'
-
     const response = request.post('api/product-copy-count',params);
-
   }
 
   return (

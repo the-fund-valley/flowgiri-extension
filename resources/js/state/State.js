@@ -103,3 +103,13 @@ export const  noPageState = atom({
     default: false
 });
 
+
+export const  codeStorageState = atom({
+    key: "codeStorageState",
+    default: {
+        sectionStorage:{},
+        templateStorage:{}
+    }
+});
+
+

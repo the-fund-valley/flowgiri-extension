@@ -8,7 +8,7 @@ import { getAndSetThemesDataToState } from "./Request/api.js";
 import { activeCategoryState } from "./state/State.js";
 
 function Main() {
-  const [extensionIsOn, setExtensionIsOn] = useState(true);
+  const [extensionIsOn, setExtensionIsOn] = useState(false);
   const activeCategory = useRecoilValue(activeCategoryState);
 
   useEffect(() => {
