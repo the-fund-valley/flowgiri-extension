@@ -77,7 +77,7 @@ function Main() {
       var interval = setInterval(function () {
         callCounter++;
         (0,_Request_api_js__WEBPACK_IMPORTED_MODULE_7__.getUserAuthInfo)();
-        if (callCounter > 20) {
+        if (callCounter > 30) {
           return function () {
             return clearInterval(interval);
           };
@@ -1219,7 +1219,7 @@ function Navbar() {
     "class": "font-bold text-[14px] leading-[12px] text-[#FFFFFF] opacity-50"
   }, "Pricing"), authUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "User") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     target: "_blank",
-    href: 'http://127.0.0.1:8000/login?token=' + token,
+    href: 'https://flowgiri.com/login?token=' + token,
     className: "py-[6px] text-[#fff] px-[20px] shadow-[0px-4px_20px_-10px_#6E79D6] rounded-[999px] bg-[#5E5DF0]"
   }, "Login"))));
 }
@@ -54688,11 +54688,12 @@ jquery__WEBPACK_IMPORTED_MODULE_3___default()(document).ready(function () {
   // })
 });
 
-var login = document.getElementById("login");
-var register = document.getElementById("register");
-var $token = localStorage.getItem("browserToken");
-login.setAttribute('href', "http://127.0.0.1:8000/login?token=" + $token);
-register.setAttribute('href', "http://127.0.0.1:8000/register?token=" + $token);
+// var login = document.getElementById("login");
+// var register = document.getElementById("register");
+// var $token = localStorage.getItem("browserToken");
+// login.setAttribute('href', "http://127.0.0.1:8000/login?token="+$token);
+// register.setAttribute('href', "http://127.0.0.1:8000/register?token="+$token);
+
 FlowGiriAppInterval = setInterval(tryInitApp, 100);
 })();
 

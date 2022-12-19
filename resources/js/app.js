@@ -110,13 +110,11 @@ $(document).ready(function () {
 
 })
 
-
-
-var login = document.getElementById("login");
-var register = document.getElementById("register");
-var $token = localStorage.getItem("browserToken");
-login.setAttribute('href', "http://127.0.0.1:8000/login?token="+$token);
-register.setAttribute('href', "http://127.0.0.1:8000/register?token="+$token);
+// var login = document.getElementById("login");
+// var register = document.getElementById("register");
+// var $token = localStorage.getItem("browserToken");
+// login.setAttribute('href', "http://127.0.0.1:8000/login?token="+$token);
+// register.setAttribute('href', "http://127.0.0.1:8000/register?token="+$token);
 
 FlowGiriAppInterval = setInterval(tryInitApp, 100)
 

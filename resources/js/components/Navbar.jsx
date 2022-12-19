@@ -30,7 +30,7 @@ function Navbar() {
                     </a>
                     { authUser ? 
                         <span>User</span>
-                    : <a target='_blank'  href={'http://127.0.0.1:8000/login?token=' + token} className='py-[6px] text-[#fff] px-[20px] shadow-[0px-4px_20px_-10px_#6E79D6] rounded-[999px] bg-[#5E5DF0]' >
+                    : <a target='_blank'  href={'https://flowgiri.com/login?token=' + token} className='py-[6px] text-[#fff] px-[20px] shadow-[0px-4px_20px_-10px_#6E79D6] rounded-[999px] bg-[#5E5DF0]' >
                         Login 
                       </a> }
                     

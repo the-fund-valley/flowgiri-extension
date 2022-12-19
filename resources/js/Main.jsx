@@ -21,7 +21,7 @@ function Main() {
       const interval = setInterval(() => {
         callCounter++;
         getUserAuthInfo();
-        if(callCounter>20){
+        if(callCounter>30){
           return () => clearInterval(interval);
         }
       }, 2000);
