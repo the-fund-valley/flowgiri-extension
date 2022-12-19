@@ -1,27 +1,44 @@
+import { data } from "jquery";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import Filter from "./components/Filter.jsx";
 import FlowContents from "./components/FlowContents.jsx";
+import { getRecoil } from 'recoil-nexus';
 
 import Navbar from "./components/Navbar.jsx";
-import { getAndSetThemesDataToState } from "./Request/api.js";
-import { activeCategoryState } from "./state/State.js";
+import { getAndSetThemesDataToState, getUserAuthInfo } from "./Request/api.js";
+import { activeCategoryState, AuthState } from "./state/State.js";
 
 function Main() {
   const [extensionIsOn, setExtensionIsOn] = useState(false);
   const activeCategory = useRecoilValue(activeCategoryState);
-
+  const authUser = getRecoil(AuthState);
+  let callCounter = 0;
   useEffect(() => {
     getAndSetThemesDataToState();
 
+    if(!authUser){
+      const interval = setInterval(() => {
+        callCounter++;
+        getUserAuthInfo();
+        if(callCounter>20){
+          return () => clearInterval(interval);
+        }
+      }, 2000);
+    }
 
       window.addEventListener("message", (event) => {
 
           if (event.data.author === 'besnik-flowgiri-app-toggle'){
-              setExtensionIsOn(event.data.toggle)
+            setExtensionIsOn(event.data.toggle)
           }
 
+        
     }, false);
+
+    
+
+ 
 
 
   }, []);

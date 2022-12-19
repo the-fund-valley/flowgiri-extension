@@ -38,13 +38,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/index.js");
-/* harmony import */ var _components_Filter_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Filter.jsx */ "./resources/js/components/Filter.jsx");
-/* harmony import */ var _components_FlowContents_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/FlowContents.jsx */ "./resources/js/components/FlowContents.jsx");
-/* harmony import */ var _components_Navbar_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Navbar.jsx */ "./resources/js/components/Navbar.jsx");
-/* harmony import */ var _Request_api_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Request/api.js */ "./resources/js/Request/api.js");
-/* harmony import */ var _state_State_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./state/State.js */ "./resources/js/state/State.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ "./node_modules/recoil/es/index.js");
+/* harmony import */ var _components_Filter_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Filter.jsx */ "./resources/js/components/Filter.jsx");
+/* harmony import */ var _components_FlowContents_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/FlowContents.jsx */ "./resources/js/components/FlowContents.jsx");
+/* harmony import */ var recoil_nexus__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! recoil-nexus */ "./node_modules/recoil-nexus/build/RecoilNexus.js");
+/* harmony import */ var _components_Navbar_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Navbar.jsx */ "./resources/js/components/Navbar.jsx");
+/* harmony import */ var _Request_api_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Request/api.js */ "./resources/js/Request/api.js");
+/* harmony import */ var _state_State_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./state/State.js */ "./resources/js/state/State.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -58,28 +61,43 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function Main() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     extensionIsOn = _useState2[0],
     setExtensionIsOn = _useState2[1];
-  var activeCategory = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_state_State_js__WEBPACK_IMPORTED_MODULE_6__.activeCategoryState);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    (0,_Request_api_js__WEBPACK_IMPORTED_MODULE_5__.getAndSetThemesDataToState)();
+  var activeCategory = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_state_State_js__WEBPACK_IMPORTED_MODULE_8__.activeCategoryState);
+  var authUser = (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_5__.getRecoil)(_state_State_js__WEBPACK_IMPORTED_MODULE_8__.AuthState);
+  var callCounter = 0;
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    (0,_Request_api_js__WEBPACK_IMPORTED_MODULE_7__.getAndSetThemesDataToState)();
+    if (!authUser) {
+      var interval = setInterval(function () {
+        callCounter++;
+        (0,_Request_api_js__WEBPACK_IMPORTED_MODULE_7__.getUserAuthInfo)();
+        if (callCounter > 20) {
+          return function () {
+            return clearInterval(interval);
+          };
+        }
+      }, 2000);
+    }
     window.addEventListener("message", function (event) {
       if (event.data.author === 'besnik-flowgiri-app-toggle') {
         setExtensionIsOn(event.data.toggle);
       }
     }, false);
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     id: "flowgiri-app-container"
-  }, extensionIsOn && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, extensionIsOn && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     id: "flowgiri-app-bg",
     className: "z-[99]  fixed top-0 bottom-0 right-0 left-[33px] bg-[rgba(0,0,0,.2)]"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "z-[9999] bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px] left-[35px] h-[100vh] w-[833px]"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Navbar_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Filter_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_FlowContents_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null)))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_Navbar_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_Filter_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_FlowContents_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null)))));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Main);
 
@@ -100,7 +118,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getAndSetThemeCategoryDataToState": () => (/* binding */ getAndSetThemeCategoryDataToState),
 /* harmony export */   "getAndSetThemeDataToState": () => (/* binding */ getAndSetThemeDataToState),
 /* harmony export */   "getAndSetThemesDataToState": () => (/* binding */ getAndSetThemesDataToState),
-/* harmony export */   "getSearchData": () => (/* binding */ getSearchData)
+/* harmony export */   "getSearchData": () => (/* binding */ getSearchData),
+/* harmony export */   "getUserAuthInfo": () => (/* binding */ getUserAuthInfo)
 /* harmony export */ });
 /* harmony import */ var recoil_nexus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil-nexus */ "./node_modules/recoil-nexus/build/RecoilNexus.js");
 /* harmony import */ var _state_State__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../state/State */ "./resources/js/state/State.js");
@@ -158,73 +177,103 @@ var getAndSetThemesDataToState = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
-var getAndSetThemeDataToState = /*#__PURE__*/function () {
+var getUserAuthInfo = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-    var receivedData;
+    var token, receivedData;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
+            token = localStorage.getItem('browserToken');
+            if (!token) {
+              token = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);
+              localStorage.setItem('browserToken', token);
+            }
+            _context2.next = 4;
+            return ___WEBPACK_IMPORTED_MODULE_2__.request.post("api/get-user-auth-info", {
+              browser_token: token
+            });
+          case 4:
+            receivedData = _context2.sent;
+            (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.AuthState, receivedData.value);
+          case 6:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return function getUserAuthInfo() {
+    return _ref2.apply(this, arguments);
+  };
+}();
+var getAndSetThemeDataToState = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+    var receivedData;
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeCategoryState) === "templates")) {
-              _context2.next = 10;
+              _context3.next = 10;
               break;
             }
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.TemplatesState).length > 0)) {
-              _context2.next = 3;
+              _context3.next = 3;
               break;
             }
-            return _context2.abrupt("return");
+            return _context3.abrupt("return");
           case 3:
-            _context2.next = 5;
+            _context3.next = 5;
             return ___WEBPACK_IMPORTED_MODULE_2__.request.get("api/theme-templates?");
           case 5:
-            receivedData = _context2.sent;
+            receivedData = _context3.sent;
             if (!receivedData.data.length) {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noTemplateState, true);
             } else {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noTemplateState, false);
             }
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.TemplatesState, receivedData.data);
-            _context2.next = 28;
+            _context3.next = 28;
             break;
           case 10:
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeCategoryState) === "sections")) {
-              _context2.next = 20;
+              _context3.next = 20;
               break;
             }
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.SectionsState).length > 0)) {
-              _context2.next = 13;
+              _context3.next = 13;
               break;
             }
-            return _context2.abrupt("return");
+            return _context3.abrupt("return");
           case 13:
-            _context2.next = 15;
+            _context3.next = 15;
             return ___WEBPACK_IMPORTED_MODULE_2__.request.get("api/theme-sections?");
           case 15:
-            receivedData = _context2.sent;
+            receivedData = _context3.sent;
             if (!receivedData.data.length) {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noSectionState, true);
             } else {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noSectionState, false);
             }
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.SectionsState, receivedData.data);
-            _context2.next = 28;
+            _context3.next = 28;
             break;
           case 20:
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeCategoryState) === "pages")) {
-              _context2.next = 28;
+              _context3.next = 28;
               break;
             }
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.pagesState).length > 0)) {
-              _context2.next = 23;
+              _context3.next = 23;
               break;
             }
-            return _context2.abrupt("return");
+            return _context3.abrupt("return");
           case 23:
-            _context2.next = 25;
+            _context3.next = 25;
             return ___WEBPACK_IMPORTED_MODULE_2__.request.get("api/theme-templates?");
           case 25:
-            receivedData = _context2.sent;
+            receivedData = _context3.sent;
             if (!receivedData.data.length) {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noPageState, true);
             } else {
@@ -233,77 +282,77 @@ var getAndSetThemeDataToState = /*#__PURE__*/function () {
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.pagesState, receivedData.data);
           case 28:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
       }
-    }, _callee2);
+    }, _callee3);
   }));
   return function getAndSetThemeDataToState() {
-    return _ref2.apply(this, arguments);
+    return _ref3.apply(this, arguments);
   };
 }();
 var getAndSetThemeCategoryDataToState = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(id) {
     var receivedData, params;
-    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) {
-        switch (_context3.prev = _context3.next) {
+        switch (_context4.prev = _context4.next) {
           case 0:
             params = {};
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeCategoryState) === "templates")) {
-              _context3.next = 11;
+              _context4.next = 11;
               break;
             }
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.TemplatesState, []);
             if (id) {
               params["theme_id"] = id;
             }
-            _context3.next = 6;
+            _context4.next = 6;
             return ___WEBPACK_IMPORTED_MODULE_2__.request.get("api/theme-templates?", params);
           case 6:
-            receivedData = _context3.sent;
+            receivedData = _context4.sent;
             if (!receivedData.data.length) {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noTemplateState, true);
             } else {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noTemplateState, false);
             }
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.TemplatesState, receivedData.data);
-            _context3.next = 29;
+            _context4.next = 29;
             break;
           case 11:
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeCategoryState) === "sections")) {
-              _context3.next = 21;
+              _context4.next = 21;
               break;
             }
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.SectionsState, []);
             if (id) {
               params["category_id"] = id;
             }
-            _context3.next = 16;
+            _context4.next = 16;
             return ___WEBPACK_IMPORTED_MODULE_2__.request.get("api/theme-sections?", params);
           case 16:
-            receivedData = _context3.sent;
+            receivedData = _context4.sent;
             if (!receivedData.data.length) {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noSectionState, true);
             } else {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noSectionState, false);
             }
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.SectionsState, receivedData.data);
-            _context3.next = 29;
+            _context4.next = 29;
             break;
           case 21:
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeCategoryState) === "pages")) {
-              _context3.next = 29;
+              _context4.next = 29;
               break;
             }
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.pagesState, []);
             if (id) {
               params["category_id"] = id;
             }
-            _context3.next = 26;
+            _context4.next = 26;
             return ___WEBPACK_IMPORTED_MODULE_2__.request.get("api/theme-templates?", params);
           case 26:
-            receivedData = _context3.sent;
+            receivedData = _context4.sent;
             if (!receivedData.data.length) {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noPageState, true);
             } else {
@@ -312,39 +361,16 @@ var getAndSetThemeCategoryDataToState = /*#__PURE__*/function () {
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.pagesState, receivedData.data);
           case 29:
           case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-  return function getAndSetThemeCategoryDataToState(_x) {
-    return _ref3.apply(this, arguments);
-  };
-}();
-var getAllTemplates = /*#__PURE__*/function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-    var receivedData;
-    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            _context4.next = 2;
-            return ___WEBPACK_IMPORTED_MODULE_2__.request.getAll("api/theme-templates");
-          case 2:
-            receivedData = _context4.sent;
-            (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.TemplatesState, receivedData.data);
-          case 4:
-          case "end":
             return _context4.stop();
         }
       }
     }, _callee4);
   }));
-  return function getAllTemplates() {
+  return function getAndSetThemeCategoryDataToState(_x) {
     return _ref4.apply(this, arguments);
   };
 }();
-var getAllSections = /*#__PURE__*/function () {
+var getAllTemplates = /*#__PURE__*/function () {
   var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
     var receivedData;
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
@@ -352,10 +378,10 @@ var getAllSections = /*#__PURE__*/function () {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.next = 2;
-            return ___WEBPACK_IMPORTED_MODULE_2__.request.getAll("api/theme-sections");
+            return ___WEBPACK_IMPORTED_MODULE_2__.request.getAll("api/theme-templates");
           case 2:
             receivedData = _context5.sent;
-            (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.SectionsState, receivedData.data);
+            (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.TemplatesState, receivedData.data);
           case 4:
           case "end":
             return _context5.stop();
@@ -363,16 +389,39 @@ var getAllSections = /*#__PURE__*/function () {
       }
     }, _callee5);
   }));
-  return function getAllSections() {
+  return function getAllTemplates() {
     return _ref5.apply(this, arguments);
   };
 }();
-var getSearchData = /*#__PURE__*/function () {
+var getAllSections = /*#__PURE__*/function () {
   var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
-    var receivedData, activeSectionCategory, activePageCategory, free, searchText, params, _getRecoil, id;
+    var receivedData;
     return _regeneratorRuntime().wrap(function _callee6$(_context6) {
       while (1) {
         switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return ___WEBPACK_IMPORTED_MODULE_2__.request.getAll("api/theme-sections");
+          case 2:
+            receivedData = _context6.sent;
+            (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.SectionsState, receivedData.data);
+          case 4:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+  return function getAllSections() {
+    return _ref6.apply(this, arguments);
+  };
+}();
+var getSearchData = /*#__PURE__*/function () {
+  var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+    var receivedData, activeSectionCategory, activePageCategory, free, searchText, params, _getRecoil, id;
+    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
           case 0:
             activeSectionCategory = (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeSectionCatagoriesState);
             activePageCategory = (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activePagesCatagoriesState);
@@ -386,7 +435,7 @@ var getSearchData = /*#__PURE__*/function () {
               params.str = searchText;
             }
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeCategoryState) === "templates")) {
-              _context6.next = 18;
+              _context7.next = 18;
               break;
             }
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.TemplatesState, []);
@@ -394,71 +443,71 @@ var getSearchData = /*#__PURE__*/function () {
             if (id) {
               params["theme_id"] = id;
             }
-            _context6.next = 13;
+            _context7.next = 13;
             return ___WEBPACK_IMPORTED_MODULE_2__.request.get("api/theme-templates?", params);
           case 13:
-            receivedData = _context6.sent;
+            receivedData = _context7.sent;
             if (!receivedData.data.length) {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noTemplateState, true);
             } else {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noTemplateState, false);
             }
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.TemplatesState, receivedData.data);
-            _context6.next = 35;
+            _context7.next = 35;
             break;
           case 18:
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeCategoryState) === "sections")) {
-              _context6.next = 28;
+              _context7.next = 28;
               break;
             }
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.SectionsState, []);
             if (activeSectionCategory.id) {
               params["category_id"] = activeSectionCategory.id;
             }
-            _context6.next = 23;
+            _context7.next = 23;
             return ___WEBPACK_IMPORTED_MODULE_2__.request.get("api/theme-sections?", params);
           case 23:
-            receivedData = _context6.sent;
+            receivedData = _context7.sent;
             if (!receivedData.data.length) {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noSectionState, true);
             } else {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noSectionState, false);
             }
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.SectionsState, receivedData.data);
-            _context6.next = 35;
+            _context7.next = 35;
             break;
           case 28:
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeCategoryState) === "pages")) {
-              _context6.next = 35;
+              _context7.next = 35;
               break;
             }
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.pagesState, []);
             if (activePageCategory.id) {
               params["category_id"] = activePageCategory.id;
             }
-            _context6.next = 33;
+            _context7.next = 33;
             return ___WEBPACK_IMPORTED_MODULE_2__.request.get("api/theme-templates?", params);
           case 33:
-            receivedData = _context6.sent;
+            receivedData = _context7.sent;
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.pagesState, receivedData.data);
           case 35:
           case "end":
-            return _context6.stop();
+            return _context7.stop();
         }
       }
-    }, _callee6);
+    }, _callee7);
   }));
   return function getSearchData() {
-    return _ref6.apply(this, arguments);
+    return _ref7.apply(this, arguments);
   };
 }();
 var fetchMoreData = /*#__PURE__*/function () {
-  var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(nextPage, setNextPage, setHasMore) {
+  var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(nextPage, setNextPage, setHasMore) {
     var _getRecoil2;
     var receivedData, free, searchText, activeSectionCategory, activePageCategory, id, params;
-    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+    return _regeneratorRuntime().wrap(function _callee8$(_context8) {
       while (1) {
-        switch (_context7.prev = _context7.next) {
+        switch (_context8.prev = _context8.next) {
           case 0:
             free = (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.contentFreeState);
             searchText = (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.searchKeywordState);
@@ -476,16 +525,16 @@ var fetchMoreData = /*#__PURE__*/function () {
               params.page = nextPage;
             }
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeCategoryState) === "templates")) {
-              _context7.next = 18;
+              _context8.next = 18;
               break;
             }
             if (id) {
               params["theme_id"] = id;
             }
-            _context7.next = 13;
+            _context8.next = 13;
             return ___WEBPACK_IMPORTED_MODULE_2__.request.get("api/theme-templates?", params);
           case 13:
-            receivedData = _context7.sent;
+            receivedData = _context8.sent;
             if (!receivedData.data.length) {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noTemplateState, true);
             } else {
@@ -494,20 +543,20 @@ var fetchMoreData = /*#__PURE__*/function () {
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.TemplatesState, function (oldState) {
               return [].concat(_toConsumableArray(oldState), _toConsumableArray(receivedData.data));
             });
-            _context7.next = 34;
+            _context8.next = 34;
             break;
           case 18:
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeCategoryState) === "sections")) {
-              _context7.next = 27;
+              _context8.next = 27;
               break;
             }
             if (activeSectionCategory.id) {
               params["category_id"] = activeSectionCategory.id;
             }
-            _context7.next = 22;
+            _context8.next = 22;
             return ___WEBPACK_IMPORTED_MODULE_2__.request.get("api/theme-sections?", params);
           case 22:
-            receivedData = _context7.sent;
+            receivedData = _context8.sent;
             if (!receivedData.data.length) {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noSectionState, true);
             } else {
@@ -516,20 +565,20 @@ var fetchMoreData = /*#__PURE__*/function () {
             (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.SectionsState, function (oldState) {
               return [].concat(_toConsumableArray(oldState), _toConsumableArray(receivedData.data));
             });
-            _context7.next = 34;
+            _context8.next = 34;
             break;
           case 27:
             if (!((0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.activeCategoryState) === "pages")) {
-              _context7.next = 34;
+              _context8.next = 34;
               break;
             }
             if (activePageCategory.id) {
               params["category_id"] = activePageCategory.id;
             }
-            _context7.next = 31;
+            _context8.next = 31;
             return ___WEBPACK_IMPORTED_MODULE_2__.request.get("api/theme-templates?", params);
           case 31:
-            receivedData = _context7.sent;
+            receivedData = _context8.sent;
             if (!receivedData.data.length) {
               (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_0__.setRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.noPageState, true);
             } else {
@@ -545,13 +594,13 @@ var fetchMoreData = /*#__PURE__*/function () {
             if (receivedData.data.length < 2) setHasMore(false);
           case 36:
           case "end":
-            return _context7.stop();
+            return _context8.stop();
         }
       }
-    }, _callee7);
+    }, _callee8);
   }));
   return function fetchMoreData(_x2, _x3, _x4) {
-    return _ref7.apply(this, arguments);
+    return _ref8.apply(this, arguments);
   };
 }();
 
@@ -961,7 +1010,7 @@ function EmptyElements() {
     fill: "#000000",
     stroke: "none"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-    d: "M225 479 c-44 -16 -99 -36 -122 -45 -34 -12 -48 -26 -72 -69 -17 -30\r -31 -59 -31 -65 0 -6 13 -16 30 -21 29 -11 29 -11 32 -101 l3 -90 127 -45 128\r -45 128 45 127 45 3 90 c3 90 3 90 32 101 17 5 30 15 30 22 0 9 -52 102 -66\r 117 -5 7 -246 92 -258 91 -6 0 -47 -13 -91 -30z m62 -169 c1 0 -6 -13 -15 -30\r -9 -16 -21 -30 -27 -30 -5 0 -51 15 -102 33 l-92 33 19 32 20 32 97 -35 c54\r -19 99 -35 100 -35z m281 38 l21 -33 -92 -32 c-51 -18 -96 -32 -102 -33 -5 0\r -17 13 -27 29 l-16 29 96 36 c54 19 98 35 99 35 0 1 10 -14 21 -31z m-220\r -113 c12 -19 26 -35 31 -35 6 0 41 11 79 25 38 14 72 25 76 25 4 0 6 -30 4\r -66 l-3 -66 -95 -34 c-52 -19 -96 -34 -97 -34 -2 0 -3 29 -3 65 0 58 -2 65\r -20 65 -18 0 -20 -7 -20 -65 0 -36 -1 -65 -2 -65 -2 1 -46 16 -98 34 l-95 33\r -3 67 c-2 36 0 66 4 66 4 0 38 -11 76 -25 38 -14 73 -25 79 -25 5 0 19 16 31\r 35 13 19 25 35 28 35 3 0 15 -16 28 -35z"
+    d: "M225 479 c-44 -16 -99 -36 -122 -45 -34 -12 -48 -26 -72 -69 -17 -30 -31 -59 -31 -65 0 -6 13 -16 30 -21 29 -11 29 -11 32 -101 l3 -90 127 -45 128 -45 128 45 127 45 3 90 c3 90 3 90 32 101 17 5 30 15 30 22 0 9 -52 102 -66 117 -5 7 -246 92 -258 91 -6 0 -47 -13 -91 -30z m62 -169 c1 0 -6 -13 -15 -30 -9 -16 -21 -30 -27 -30 -5 0 -51 15 -102 33 l-92 33 19 32 20 32 97 -35 c54 -19 99 -35 100 -35z m281 38 l21 -33 -92 -32 c-51 -18 -96 -32 -102 -33 -5 0 -17 13 -27 29 l-16 29 96 36 c54 19 98 35 99 35 0 1 10 -14 21 -31z m-220 -113 c12 -19 26 -35 31 -35 6 0 41 11 79 25 38 14 72 25 76 25 4 0 6 -30 4 -66 l-3 -66 -95 -34 c-52 -19 -96 -34 -97 -34 -2 0 -3 29 -3 65 0 58 -2 65 -20 65 -18 0 -20 -7 -20 -65 0 -36 -1 -65 -2 -65 -2 1 -46 16 -98 34 l-95 33 -3 67 c-2 36 0 66 4 66 4 0 38 -11 76 -25 38 -14 73 -25 79 -25 5 0 19 16 31 35 13 19 25 35 28 35 3 0 15 -16 28 -35z"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "font-bold text-[30px] leading-[55px]"
   }, "No items")));
@@ -1143,8 +1192,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _state_State__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../state/State */ "./resources/js/state/State.js");
+/* harmony import */ var recoil_nexus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil-nexus */ "./node_modules/recoil-nexus/build/RecoilNexus.js");
+
+
 
 function Navbar() {
+  var authUser = (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_2__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.AuthState);
+  var token = localStorage.getItem('browserToken');
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", {
     "class": "bg-[#212121] px-2 sm:px-4 py-2.5 dark:bg-gray-900 max-w-[833px]  w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1162,9 +1217,9 @@ function Navbar() {
     target: "_blank",
     href: "https://flowgiri.com/pricing",
     "class": "font-bold text-[14px] leading-[12px] text-[#FFFFFF] opacity-50"
-  }, "Pricing"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+  }, "Pricing"), authUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "User") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     target: "_blank",
-    href: "https://flowgiri.com/login",
+    href: 'http://127.0.0.1:8000/login?token=' + token,
     className: "py-[6px] text-[#fff] px-[20px] shadow-[0px-4px_20px_-10px_#6E79D6] rounded-[999px] bg-[#5E5DF0]"
   }, "Login"))));
 }
@@ -1563,7 +1618,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "baseURL": () => (/* binding */ baseURL)
 /* harmony export */ });
-var baseURL = 'https://flowgiri.com/';
+// export const baseURL = 'https://flowgiri.com/'
+var baseURL = 'http://127.0.0.1:8000/';
 
 /***/ }),
 
@@ -3923,6 +3979,7 @@ var debounce = function debounce(func) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AuthState": () => (/* binding */ AuthState),
 /* harmony export */   "SectionsState": () => (/* binding */ SectionsState),
 /* harmony export */   "TemplatesState": () => (/* binding */ TemplatesState),
 /* harmony export */   "ThemesState": () => (/* binding */ ThemesState),
@@ -4027,6 +4084,10 @@ var codeStorageState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
     sectionStorage: {},
     templateStorage: {}
   }
+});
+var AuthState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
+  key: "AuthState",
+  "default": false
 });
 
 /***/ }),
@@ -54627,8 +54688,14 @@ jquery__WEBPACK_IMPORTED_MODULE_3___default()(document).ready(function () {
   // })
 });
 
+var login = document.getElementById("login");
+var register = document.getElementById("register");
+var $token = localStorage.getItem("browserToken");
+login.setAttribute('href', "http://127.0.0.1:8000/login?token=" + $token);
+register.setAttribute('href', "http://127.0.0.1:8000/register?token=" + $token);
 FlowGiriAppInterval = setInterval(tryInitApp, 100);
 })();
 
 /******/ })()
 ;
+//# sourceMappingURL=app.js.map

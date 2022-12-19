@@ -1,6 +1,9 @@
 import React from 'react'
-
+import { AuthState } from "../state/State";
+import { getRecoil } from 'recoil-nexus';
 function Navbar() {
+    const authUser = getRecoil(AuthState);
+    let token = localStorage.getItem('browserToken');
     return (
         <nav class="bg-[#212121] px-2 sm:px-4 py-2.5 dark:bg-gray-900 max-w-[833px]  w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
             <div class="container flex items-center justify-between mx-auto">
@@ -25,10 +28,12 @@ function Navbar() {
                     <a target='_blank' href="https://flowgiri.com/pricing" class="font-bold text-[14px] leading-[12px] text-[#FFFFFF] opacity-50" >
                         Pricing
                     </a>
-
-                    <a target='_blank' href="https://flowgiri.com/login" className='py-[6px] text-[#fff] px-[20px] shadow-[0px-4px_20px_-10px_#6E79D6] rounded-[999px] bg-[#5E5DF0]' >
-                        Login
-                    </a>
+                    { authUser ? 
+                        <span>User</span>
+                    : <a target='_blank'  href={'http://127.0.0.1:8000/login?token=' + token} className='py-[6px] text-[#fff] px-[20px] shadow-[0px-4px_20px_-10px_#6E79D6] rounded-[999px] bg-[#5E5DF0]' >
+                        Login 
+                      </a> }
+                    
 
                     {/* <div className='py-[6px] px-[15px]  bg-[#FFC555] flex gap-[8px] justify-center items-center rounded-[100px]'>
                         <a href="" className='font-bold text-[14px] leading-[22px]  '>

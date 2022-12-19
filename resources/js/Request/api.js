@@ -15,6 +15,7 @@ import {
   SectionsState,
   TemplatesState,
   ThemesState,
+  AuthState
 } from "../state/State";
 import { request } from "./";
 
@@ -40,6 +41,18 @@ export const getAndSetThemesDataToState = async () => {
 };
 
 
+
+
+export const getUserAuthInfo = async () => {
+  let token = localStorage.getItem('browserToken');
+  if(!token){
+    token = Math.random().toString(36).substr(2)+Math.random().toString(36).substr(2);
+    localStorage.setItem('browserToken',token);
+  }
+  const receivedData = await request.post("api/get-user-auth-info",{browser_token:token});
+  setRecoil(AuthState, receivedData.value);
+
+};
 
 export const getAndSetThemeDataToState = async () => {
 

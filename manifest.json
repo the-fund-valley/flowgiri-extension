@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "description": "Admin copy to server",
     "manifest_version": 3,
+    "externally_connectable": {
+      "matches": ["http://127.0.0.1:8000/"],
+      "ids":["fkkckfnbfebepbjhmgifmmdjaepgadkh"]
+    },
     "permissions": [
         "activeTab"
       ],

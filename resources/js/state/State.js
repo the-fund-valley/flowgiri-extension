@@ -104,12 +104,18 @@ export const  noPageState = atom({
 });
 
 
+
 export const  codeStorageState = atom({
     key: "codeStorageState",
     default: {
         sectionStorage:{},
         templateStorage:{}
     }
+});
+
+export const  AuthState = atom({
+    key: "AuthState",
+    default: false
 });
 
 
