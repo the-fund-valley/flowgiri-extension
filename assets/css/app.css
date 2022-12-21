@@ -1006,9 +1006,6 @@ video {
 .gap-\[16px\]{
   gap: 16px;
 }
-.gap-\[8px\]{
-  gap: 8px;
-}
 .overflow-auto{
   overflow: auto;
 }
@@ -1231,10 +1228,6 @@ video {
 .py-\[7px\]{
   padding-top: 7px;
   padding-bottom: 7px;
-}
-.px-\[15px\]{
-  padding-left: 15px;
-  padding-right: 15px;
 }
 .pt-\[14px\]{
   padding-top: 14px;

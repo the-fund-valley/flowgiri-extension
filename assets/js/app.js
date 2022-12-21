@@ -61,6 +61,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+// import TestFrame from "./components/TestFrame.jsx";
 
 
 function Main() {
@@ -667,7 +668,6 @@ request.post = /*#__PURE__*/function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            console.log(params);
             ProjectRequestOptions = {
               method: 'POST',
               headers: {
@@ -675,15 +675,15 @@ request.post = /*#__PURE__*/function () {
               },
               body: JSON.stringify(params)
             };
-            _context2.next = 4;
+            _context2.next = 3;
             return fetch(_constants__WEBPACK_IMPORTED_MODULE_0__.baseURL + path, ProjectRequestOptions);
-          case 4:
+          case 3:
             response = _context2.sent;
-            _context2.next = 7;
+            _context2.next = 6;
             return response.json();
-          case 7:
+          case 6:
             return _context2.abrupt("return", _context2.sent);
-          case 8:
+          case 7:
           case "end":
             return _context2.stop();
         }
@@ -1192,14 +1192,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _state_State__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../state/State */ "./resources/js/state/State.js");
-/* harmony import */ var recoil_nexus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil-nexus */ "./node_modules/recoil-nexus/build/RecoilNexus.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _state_State__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../state/State */ "./resources/js/state/State.js");
+/* harmony import */ var recoil_nexus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! recoil-nexus */ "./node_modules/recoil-nexus/build/RecoilNexus.js");
 
 
 
+
+var demos = {
+  soundcloud:
+  //   '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/379775672&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>',
+  '<iframe width="100%" id="container" height="166" scrolling="no" frameborder="no" src="http://127.0.0.1:8000/"></iframe>'
+};
+function Iframe(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    dangerouslySetInnerHTML: {
+      __html: props.iframe ? props.iframe : ""
+    }
+  });
+}
 function Navbar() {
-  var authUser = (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_2__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_1__.AuthState);
+  var authUser = (0,recoil_nexus__WEBPACK_IMPORTED_MODULE_3__.getRecoil)(_state_State__WEBPACK_IMPORTED_MODULE_2__.AuthState);
   var token = localStorage.getItem('browserToken');
+  var message = "test";
+  var myIframe = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log(myIframe, myIframe);
+    var el = document.getElementById('container').contentWindow;
+    console.log(el, el.contentWindow);
+    el.postMessage("jgdshghjdsgfjgd", "https://webflow.com");
+    window.onload = function () {
+      window.addEventListener('message', function (event) {
+        console.log("Message received from the parent: " + event.data, event); // Message received from parent
+      });
+    };
+
+    window.addEventListener('message', function (event) {
+      console.log("3 Message received from the parent: " + event.data, event); // Message received from parent
+    });
+  });
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", {
     "class": "bg-[#212121] px-2 sm:px-4 py-2.5 dark:bg-gray-900 max-w-[833px]  w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1221,7 +1253,12 @@ function Navbar() {
     target: "_blank",
     href: 'https://flowgiri.com/login?token=' + token,
     className: "py-[6px] text-[#fff] px-[20px] shadow-[0px-4px_20px_-10px_#6E79D6] rounded-[999px] bg-[#5E5DF0]"
-  }, "Login"))));
+  }, "Login"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Iframe, {
+    iframe: demos["soundcloud"],
+    ref: myIframe
+  }), ",", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    id: "send"
+  }, "Send Message")));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Navbar);
 

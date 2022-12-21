@@ -18,7 +18,6 @@ request.get = async (path, params) => {
 
 request.post = async (path,params) => {
 
-    console.log(params)
 
     const ProjectRequestOptions = {
         method: 'POST',

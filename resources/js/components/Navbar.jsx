@@ -1,9 +1,45 @@
-import React from 'react'
+import React, { useEffect, useRef } from "react";
+import ReactDOM from "react-dom";
 import { AuthState } from "../state/State";
 import { getRecoil } from 'recoil-nexus';
+const demos = {
+    soundcloud:
+    //   '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/379775672&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>',
+      '<iframe width="100%" id="container" height="166" scrolling="no" frameborder="no" src="http://127.0.0.1:8000/"></iframe>',
+
+  };
+function Iframe(props) {
+    return (
+      <div
+        dangerouslySetInnerHTML={{ __html: props.iframe ? props.iframe : "" }}
+      />
+    );
+  }
+
 function Navbar() {
     const authUser = getRecoil(AuthState);
     let token = localStorage.getItem('browserToken');
+    var message ="test"
+    const myIframe = useRef(null);
+    
+    useEffect(() => {
+        console.log(myIframe,myIframe);
+        const el = document.getElementById('container').contentWindow;
+        console.log(el,el.contentWindow);
+        el.postMessage("jgdshghjdsgfjgd", "https://webflow.com");
+
+        window.onload = function() {
+            window.addEventListener('message', function(event) {
+            console.log("Message received from the parent: " + event.data,event); // Message received from parent
+            });
+        }
+
+        window.addEventListener('message', function(event) {
+            console.log("3 Message received from the parent: " + event.data,event); // Message received from parent
+        });
+    });
+
+
     return (
         <nav class="bg-[#212121] px-2 sm:px-4 py-2.5 dark:bg-gray-900 max-w-[833px]  w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
             <div class="container flex items-center justify-between mx-auto">
@@ -52,12 +88,25 @@ function Navbar() {
 
 
                 </div>
-
-
             </div>
+
+
+
+            {/* <iframe src="https://flowgiri.com" ref={myIframe} scrolling="no" frameBorder="0" ></iframe> */}
+
+
+            <Iframe iframe={demos["soundcloud"]} ref={myIframe} />,
+           
+
+            <p>
+              <button id="send">Send Message</button>
+            </p>
+
         </nav>
 
     )
+
+   
 }
 
 export default Navbar

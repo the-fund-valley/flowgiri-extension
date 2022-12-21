@@ -6,6 +6,7 @@ import FlowContents from "./components/FlowContents.jsx";
 import { getRecoil } from 'recoil-nexus';
 
 import Navbar from "./components/Navbar.jsx";
+// import TestFrame from "./components/TestFrame.jsx";
 import { getAndSetThemesDataToState, getUserAuthInfo } from "./Request/api.js";
 import { activeCategoryState, AuthState } from "./state/State.js";
 
@@ -52,6 +53,8 @@ function Main() {
          <div id='flowgiri-app-bg' className='z-[99]  fixed top-0 bottom-0 right-0 left-[33px] bg-[rgba(0,0,0,.2)]'></div>
           <div className="z-[9999] bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px] left-[35px] h-[100vh] w-[833px]">
             <Navbar />
+
+            {/* <TestFrame /> */}
 
             <Filter />
 
