@@ -3,17 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App.jsx'
 import $ from "jquery";
 
-function FlowGiriInit() {
-
-    if (document.getElementById('flowGiriApp')) {
-        ReactDOM.render(
-            <App/>,
-            document.getElementById('flowGiriApp')
-        );
-
-    }
-}
-
 function addSideNav() {
     let flowgiriNav = ` <div 
         class="flowgiri-icon-area"
@@ -51,12 +40,17 @@ $(document).ready(function () {
 
     setTimeout(function () {
 
-        let div = '<div id="flowGiriApp"> </div>';
+        let div = `<div  id='flowgiri-app-container'>
+                        <div id="flowgiri-extension" class="z-[9999] bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px]  h-[100vh] w-[833px]">
+                        <iframe src="https://flowgiri.com/extension"  class="h-[100%] w-[100%]"></iframe> 
+                       </div> 
+                       
+                       <div id='flowgiri-app-bg' class='flowgiri-app-bg  z-[99]  fixed top-0 bottom-0 right-0 left-[33px] bg-[rgba(0,0,0,.2)]'></div>
+                      
+                   </div>`;
 
         setTimeout(() => {
             $("body").append(div);
-
-            FlowGiriInit();
         }, 300)
 
     }, 1000)
@@ -66,41 +60,17 @@ $(document).ready(function () {
         FlowGiriAppInterval = setInterval(tryInitApp, 100)
     });
 
-    let toggleAPp = false;
-
     $('body').on('click', ".flowgiri-icon-area", function () {
 
-        toggleAPp = !toggleAPp;
 
-        postMessage({
-            author: 'besnik-flowgiri-app-toggle',
-            toggle: toggleAPp
-        }, '*')
+       $("body").find('#flowgiri-extension').toggleClass('active')
 
     });
 
 
-    document.addEventListener('click', function(event) {
-          const isOutside = $(event.target).closest('#flowgiri-app-container');
-
-         if(!isOutside.length && toggleAPp && !$(event.target).closest('.flowgiri-icon-area').length) {
-             postMessage({
-                 author: 'besnik-flowgiri-app-toggle',
-                 toggle: false
-             }, '*')
-
-             toggleAPp = false ;
-         }
-
-    })
-
-
     $("body").on('click', '#flowgiri-app-bg', function () {
-        postMessage({
-            author: 'besnik-flowgiri-app-toggle',
-            toggle: false
-        }, '*')
-        toggleAPp = false ;
+
+        $("body").find('#flowgiri-extension').toggleClass('active')
     })
 
 

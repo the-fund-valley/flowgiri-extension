@@ -31,7 +31,36 @@ body {
         @apply  absolute left-[1px] top-[439px] z-[9999] bg-[#4d4d4d] py-[4x] px-[3px] mr-[-17px] right-[-17px];
     }
 
+
   }
+
+
+.flowgiri-applicaiton{
+    transition: all .4s ;
+    left: 100px;
+    visibility: hidden;
+    z-index: -1;
+    opacity: 0;
+}
+
+.flowgiri-applicaiton.active{
+    left: 35px;
+    visibility: visible;
+    z-index: 999;
+    opacity: 1;
+}
+
+.flowgiri-app-bg{
+    transition: all .5s ;
+    visibility: hidden;
+    z-index: -1;
+    opacity: 0;
+}
+.flowgiri-applicaiton.active + .flowgiri-app-bg{
+    visibility: visible;
+    z-index: 99;
+    opacity: 1;
+}
 
   .card__image img {
     object-fit: cover;
@@ -128,3 +157,4 @@ body {
   height: 40px;
   width: 80%;
 }
+

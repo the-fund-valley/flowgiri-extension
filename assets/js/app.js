@@ -66,11 +66,6 @@ function Main() {
   var activeCategory = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilValue)(_state_State_js__WEBPACK_IMPORTED_MODULE_6__.activeCategoryState);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     (0,_Request_api_js__WEBPACK_IMPORTED_MODULE_5__.getAndSetThemesDataToState)();
-    window.addEventListener("message", function (event) {
-      if (event.data.author === 'besnik-flowgiri-app-toggle') {
-        setExtensionIsOn(event.data.toggle);
-      }
-    }, false);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     id: "flowgiri-app-container"
@@ -961,7 +956,7 @@ function EmptyElements() {
     fill: "#000000",
     stroke: "none"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-    d: "M225 479 c-44 -16 -99 -36 -122 -45 -34 -12 -48 -26 -72 -69 -17 -30\r -31 -59 -31 -65 0 -6 13 -16 30 -21 29 -11 29 -11 32 -101 l3 -90 127 -45 128\r -45 128 45 127 45 3 90 c3 90 3 90 32 101 17 5 30 15 30 22 0 9 -52 102 -66\r 117 -5 7 -246 92 -258 91 -6 0 -47 -13 -91 -30z m62 -169 c1 0 -6 -13 -15 -30\r -9 -16 -21 -30 -27 -30 -5 0 -51 15 -102 33 l-92 33 19 32 20 32 97 -35 c54\r -19 99 -35 100 -35z m281 38 l21 -33 -92 -32 c-51 -18 -96 -32 -102 -33 -5 0\r -17 13 -27 29 l-16 29 96 36 c54 19 98 35 99 35 0 1 10 -14 21 -31z m-220\r -113 c12 -19 26 -35 31 -35 6 0 41 11 79 25 38 14 72 25 76 25 4 0 6 -30 4\r -66 l-3 -66 -95 -34 c-52 -19 -96 -34 -97 -34 -2 0 -3 29 -3 65 0 58 -2 65\r -20 65 -18 0 -20 -7 -20 -65 0 -36 -1 -65 -2 -65 -2 1 -46 16 -98 34 l-95 33\r -3 67 c-2 36 0 66 4 66 4 0 38 -11 76 -25 38 -14 73 -25 79 -25 5 0 19 16 31\r 35 13 19 25 35 28 35 3 0 15 -16 28 -35z"
+    d: "M225 479 c-44 -16 -99 -36 -122 -45 -34 -12 -48 -26 -72 -69 -17 -30 -31 -59 -31 -65 0 -6 13 -16 30 -21 29 -11 29 -11 32 -101 l3 -90 127 -45 128 -45 128 45 127 45 3 90 c3 90 3 90 32 101 17 5 30 15 30 22 0 9 -52 102 -66 117 -5 7 -246 92 -258 91 -6 0 -47 -13 -91 -30z m62 -169 c1 0 -6 -13 -15 -30 -9 -16 -21 -30 -27 -30 -5 0 -51 15 -102 33 l-92 33 19 32 20 32 97 -35 c54 -19 99 -35 100 -35z m281 38 l21 -33 -92 -32 c-51 -18 -96 -32 -102 -33 -5 0 -17 13 -27 29 l-16 29 96 36 c54 19 98 35 99 35 0 1 10 -14 21 -31z m-220 -113 c12 -19 26 -35 31 -35 6 0 41 11 79 25 38 14 72 25 76 25 4 0 6 -30 4 -66 l-3 -66 -95 -34 c-52 -19 -96 -34 -97 -34 -2 0 -3 29 -3 65 0 58 -2 65 -20 65 -18 0 -20 -7 -20 -65 0 -36 -1 -65 -2 -65 -2 1 -46 16 -98 34 l-95 33 -3 67 c-2 36 0 66 4 66 4 0 38 -11 76 -25 38 -14 73 -25 79 -25 5 0 19 16 31 35 13 19 25 35 28 35 3 0 15 -16 28 -35z"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "font-bold text-[30px] leading-[55px]"
   }, "No items")));
@@ -4038,7 +4033,7 @@ var codeStorageState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({
 /***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery JavaScript Library v3.6.1
+ * jQuery JavaScript Library v3.6.2
  * https://jquery.com/
  *
  * Includes Sizzle.js
@@ -4048,7 +4043,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2022-08-26T17:52Z
+ * Date: 2022-12-13T14:56Z
  */
 ( function( global, factory ) {
 
@@ -4190,7 +4185,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.6.1",
+	version = "3.6.2",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -4561,14 +4556,14 @@ function isArrayLike( obj ) {
 }
 var Sizzle =
 /*!
- * Sizzle CSS Selector Engine v2.3.6
+ * Sizzle CSS Selector Engine v2.3.8
  * https://sizzlejs.com/
  *
  * Copyright JS Foundation and other contributors
  * Released under the MIT license
  * https://js.foundation/
  *
- * Date: 2021-02-16
+ * Date: 2022-11-16
  */
 ( function( window ) {
 var i,
@@ -4918,6 +4913,27 @@ function Sizzle( selector, context, results, seed ) {
 				}
 
 				try {
+
+					// `qSA` may not throw for unrecognized parts using forgiving parsing:
+					// https://drafts.csswg.org/selectors/#forgiving-selector
+					// like the `:has()` pseudo-class:
+					// https://drafts.csswg.org/selectors/#relational
+					// `CSS.supports` is still expected to return `false` then:
+					// https://drafts.csswg.org/css-conditional-4/#typedef-supports-selector-fn
+					// https://drafts.csswg.org/css-conditional-4/#dfn-support-selector
+					if ( support.cssSupportsSelector &&
+
+						// eslint-disable-next-line no-undef
+						!CSS.supports( "selector(" + newSelector + ")" ) ) {
+
+						// Support: IE 11+
+						// Throw to get to the same code path as an error directly in qSA.
+						// Note: once we only support browser supporting
+						// `CSS.supports('selector(...)')`, we can most likely drop
+						// the `try-catch`. IE doesn't implement the API.
+						throw new Error();
+					}
+
 					push.apply( results,
 						newContext.querySelectorAll( newSelector )
 					);
@@ -5213,6 +5229,31 @@ setDocument = Sizzle.setDocument = function( node ) {
 			!el.querySelectorAll( ":scope fieldset div" ).length;
 	} );
 
+	// Support: Chrome 105+, Firefox 104+, Safari 15.4+
+	// Make sure forgiving mode is not used in `CSS.supports( "selector(...)" )`.
+	//
+	// `:is()` uses a forgiving selector list as an argument and is widely
+	// implemented, so it's a good one to test against.
+	support.cssSupportsSelector = assert( function() {
+		/* eslint-disable no-undef */
+
+		return CSS.supports( "selector(*)" ) &&
+
+			// Support: Firefox 78-81 only
+			// In old Firefox, `:is()` didn't use forgiving parsing. In that case,
+			// fail this test as there's no selector to test against that.
+			// `CSS.supports` uses unforgiving parsing
+			document.querySelectorAll( ":is(:jqfake)" ) &&
+
+			// `*` is needed as Safari & newer Chrome implemented something in between
+			// for `:has()` - it throws in `qSA` if it only contains an unsupported
+			// argument but multiple ones, one of which is supported, are fine.
+			// We want to play safe in case `:is()` gets the same treatment.
+			!CSS.supports( "selector(:is(*,:jqfake))" );
+
+		/* eslint-enable */
+	} );
+
 	/* Attributes
 	---------------------------------------------------------------------- */
 
@@ -5479,6 +5520,18 @@ setDocument = Sizzle.setDocument = function( node ) {
 		} );
 	}
 
+	if ( !support.cssSupportsSelector ) {
+
+		// Support: Chrome 105+, Safari 15.4+
+		// `:has()` uses a forgiving selector list as an argument so our regular
+		// `try-catch` mechanism fails to catch `:has()` with arguments not supported
+		// natively like `:has(:contains("Foo"))`. Where supported & spec-compliant,
+		// we now use `CSS.supports("selector(SELECTOR_TO_BE_TESTED)")` but outside
+		// that, let's mark `:has` as buggy to always use jQuery traversal for
+		// `:has()`.
+		rbuggyQSA.push( ":has" );
+	}
+
 	rbuggyQSA = rbuggyQSA.length && new RegExp( rbuggyQSA.join( "|" ) );
 	rbuggyMatches = rbuggyMatches.length && new RegExp( rbuggyMatches.join( "|" ) );
 
@@ -5491,7 +5544,14 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// As in, an element does not contain itself
 	contains = hasCompare || rnative.test( docElem.contains ) ?
 		function( a, b ) {
-			var adown = a.nodeType === 9 ? a.documentElement : a,
+
+			// Support: IE <9 only
+			// IE doesn't have `contains` on `document` so we need to check for
+			// `documentElement` presence.
+			// We need to fall back to `a` when `documentElement` is missing
+			// as `ownerDocument` of elements within `<template/>` may have
+			// a null one - a default behavior of all modern browsers.
+			var adown = a.nodeType === 9 && a.documentElement || a,
 				bup = b && b.parentNode;
 			return a === bup || !!( bup && bup.nodeType === 1 && (
 				adown.contains ?
@@ -6281,7 +6341,7 @@ Expr = Sizzle.selectors = {
 			return elem.nodeName.toLowerCase() === "input" &&
 				elem.type === "text" &&
 
-				// Support: IE<8
+				// Support: IE <10 only
 				// New HTML5 attribute values (e.g., "search") appear with elem.type === "text"
 				( ( attr = elem.getAttribute( "type" ) ) == null ||
 					attr.toLowerCase() === "text" );
@@ -10647,17 +10707,37 @@ function curCSS( elem, name, computed ) {
 	//   .css('filter') (IE 9 only, trac-12537)
 	//   .css('--customProperty) (gh-3144)
 	if ( computed ) {
+
+		// Support: IE <=9 - 11+
+		// IE only supports `"float"` in `getPropertyValue`; in computed styles
+		// it's only available as `"cssFloat"`. We no longer modify properties
+		// sent to `.css()` apart from camelCasing, so we need to check both.
+		// Normally, this would create difference in behavior: if
+		// `getPropertyValue` returns an empty string, the value returned
+		// by `.css()` would be `undefined`. This is usually the case for
+		// disconnected elements. However, in IE even disconnected elements
+		// with no styles return `"none"` for `getPropertyValue( "float" )`
 		ret = computed.getPropertyValue( name ) || computed[ name ];
 
-		// trim whitespace for custom property (issue gh-4926)
-		if ( isCustomProp ) {
+		if ( isCustomProp && ret ) {
 
-			// rtrim treats U+000D CARRIAGE RETURN and U+000C FORM FEED
+			// Support: Firefox 105+, Chrome <=105+
+			// Spec requires trimming whitespace for custom properties (gh-4926).
+			// Firefox only trims leading whitespace. Chrome just collapses
+			// both leading & trailing whitespace to a single space.
+			//
+			// Fall back to `undefined` if empty string returned.
+			// This collapses a missing definition with property defined
+			// and set to an empty string but there's no standard API
+			// allowing us to differentiate them without a performance penalty
+			// and returning `undefined` aligns with older jQuery.
+			//
+			// rtrimCSS treats U+000D CARRIAGE RETURN and U+000C FORM FEED
 			// as whitespace while CSS does not, but this is not a problem
 			// because CSS preprocessing replaces them with U+000A LINE FEED
 			// (which *is* CSS whitespace)
 			// https://www.w3.org/TR/css-syntax-3/#input-preprocessing
-			ret = ret.replace( rtrimCSS, "$1" );
+			ret = ret.replace( rtrimCSS, "$1" ) || undefined;
 		}
 
 		if ( ret === "" && !isAttached( elem ) ) {
@@ -54569,11 +54649,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function FlowGiriInit() {
-  if (document.getElementById('flowGiriApp')) {
-    react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_App_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('flowGiriApp'));
-  }
-}
 function addSideNav() {
   var flowgiriNav = " <div \n        class=\"flowgiri-icon-area\"\n        style=\"\n          width: 40px;\n          height: 40px;\n          display: flex;\n          justify-content: center;\n          align-items: center;\n          cursor: pointer\n        \"\n      >\n        <img\n        class='w-[20px] h-[20px]'\n          src=\"https://besnik-space.fra1.cdn.digitaloceanspaces.com/random/uOp84rUFp0BqibMSQE891671105367.svg\"\n          alt=\"\"\n        />\n      </div>";
   jquery__WEBPACK_IMPORTED_MODULE_3___default()(".left-sidebar-links").append(flowgiriNav);
@@ -54587,39 +54662,19 @@ function tryInitApp() {
 }
 jquery__WEBPACK_IMPORTED_MODULE_3___default()(document).ready(function () {
   setTimeout(function () {
-    var div = '<div id="flowGiriApp"> </div>';
+    var div = "<div  id='flowgiri-app-container'>\n                        <div id=\"flowgiri-extension\" class=\"z-[9999] bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px]  h-[100vh] w-[833px]\">\n                        <iframe src=\"https://flowgiri.com/extension\"  class=\"h-[100%] w-[100%]\"></iframe> \n                       </div> \n                       \n                       <div id='flowgiri-app-bg' class='flowgiri-app-bg  z-[99]  fixed top-0 bottom-0 right-0 left-[33px] bg-[rgba(0,0,0,.2)]'></div>\n                      \n                   </div>";
     setTimeout(function () {
       jquery__WEBPACK_IMPORTED_MODULE_3___default()("body").append(div);
-      FlowGiriInit();
     }, 300);
   }, 1000);
   jquery__WEBPACK_IMPORTED_MODULE_3___default()('body').on('click', ".left-sidebar-links", function () {
     FlowGiriAppInterval = setInterval(tryInitApp, 100);
   });
-  var toggleAPp = false;
   jquery__WEBPACK_IMPORTED_MODULE_3___default()('body').on('click', ".flowgiri-icon-area", function () {
-    toggleAPp = !toggleAPp;
-    postMessage({
-      author: 'besnik-flowgiri-app-toggle',
-      toggle: toggleAPp
-    }, '*');
-  });
-  document.addEventListener('click', function (event) {
-    var isOutside = jquery__WEBPACK_IMPORTED_MODULE_3___default()(event.target).closest('#flowgiri-app-container');
-    if (!isOutside.length && toggleAPp && !jquery__WEBPACK_IMPORTED_MODULE_3___default()(event.target).closest('.flowgiri-icon-area').length) {
-      postMessage({
-        author: 'besnik-flowgiri-app-toggle',
-        toggle: false
-      }, '*');
-      toggleAPp = false;
-    }
+    jquery__WEBPACK_IMPORTED_MODULE_3___default()("body").find('#flowgiri-extension').toggleClass('active');
   });
   jquery__WEBPACK_IMPORTED_MODULE_3___default()("body").on('click', '#flowgiri-app-bg', function () {
-    postMessage({
-      author: 'besnik-flowgiri-app-toggle',
-      toggle: false
-    }, '*');
-    toggleAPp = false;
+    jquery__WEBPACK_IMPORTED_MODULE_3___default()("body").find('#flowgiri-extension').toggleClass('active');
   });
 
   // $("body").on('click', 'div[data-automation-id="left-sidebar-add-button"]', function () {
@@ -54632,3 +54687,4 @@ FlowGiriAppInterval = setInterval(tryInitApp, 100);
 
 /******/ })()
 ;
+//# sourceMappingURL=app.js.map

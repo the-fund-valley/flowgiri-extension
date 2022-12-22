@@ -14,16 +14,6 @@ function Main() {
   useEffect(() => {
     getAndSetThemesDataToState();
 
-
-      window.addEventListener("message", (event) => {
-
-          if (event.data.author === 'besnik-flowgiri-app-toggle'){
-              setExtensionIsOn(event.data.toggle)
-          }
-
-    }, false);
-
-
   }, []);
 
 
