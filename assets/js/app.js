@@ -11013,7 +11013,7 @@ function tryInitApp() {
 }
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   setTimeout(function () {
-    var div = "<div  id='flowgiri-app-container'>\n                  <div id=\"flowgiri-extension\" class=\"z-[9999] bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px]  h-[98vh] w-[833px]\">\n                     <iframe src=\"https://flowgiri.com/extension-check\"  class=\"h-[98vh] w-[100%]\"></iframe>\n                   </div>\n                   <div id='flowgiri-app-bg' class='flowgiri-app-bg  z-[99]  fixed top-0 bottom-0 right-0 left-[33px] bg-[rgba(0,0,0,.2)]'></div>\n                </div>";
+    var div = "<div  id='flowgiri-app-container'>\n                  <div id=\"flowgiri-extension\" class=\"z-[9999] bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px]  h-[98vh] w-[833px]\">\n                     <iframe src=\"https://flowgiri.com/extension-check\"  class=\"h-[100%] w-[100%]\"></iframe>\n                   </div>\n                   <div id='flowgiri-app-bg' class='flowgiri-app-bg  z-[99]  fixed top-0 bottom-0 right-0 left-[33px] bg-[rgba(0,0,0,.2)]'></div>\n                </div>";
     setTimeout(function () {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").append(div);
     }, 300);
