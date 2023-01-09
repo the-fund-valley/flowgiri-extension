@@ -20,18 +20,13 @@ body {
 }
 
 @layer components {
-
     .flowgri-nav-btn {
       @apply  w-[34px] py-[8px] px-[3px] cursor-pointer;
     }
 
-
-
     #flowgri-appplication-icon{
         @apply  absolute left-[1px] top-[439px] z-[9999] bg-[#4d4d4d] py-[4x] px-[3px] mr-[-17px] right-[-17px];
     }
-
-
   }
 
 
