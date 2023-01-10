@@ -1,126 +1,56 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App.jsx'
 import $ from "jquery";
 
-function FlowGiriInit() {
-
-    if (document.getElementById('flowGiriApp')) {
-        ReactDOM.render(
-            <App/>,
-            document.getElementById('flowGiriApp')
-        );
-
-    }
-}
-
 function addSideNav() {
-    let flowgiriNav = ` <div 
-        class="flowgiri-icon-area"
-        style="
-          width: 40px;
-          height: 40px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer
-        "
+  let flowgiriNav = `<div
+        class="flowgiri-icon-area w-[40px] h-[40px] flex justify-center items-center cursor-pointer"
       >
         <img
         class='w-[20px] h-[20px]'
           src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/random/uOp84rUFp0BqibMSQE891671105367.svg"
           alt=""
         />
-      </div>`
+      </div>`;
 
-    $(".left-sidebar-links").append(flowgiriNav)
+  $(".left-sidebar-links").append(flowgiriNav);
 }
 
 let FlowGiriAppInterval = null;
 
 function tryInitApp() {
-
-    if ($(".left-sidebar-links").length && !$('body').find('.flowgiri-icon-area').length) {
-        clearTimeout(FlowGiriAppInterval)
-        addSideNav()
-    }
-
+  if (
+    $(".left-sidebar-links").length &&
+    !$("body").find(".flowgiri-icon-area").length
+  ) {
+    clearTimeout(FlowGiriAppInterval);
+    addSideNav();
+  }
 }
 
 $(document).ready(function () {
+  setTimeout(function () {
+    let div = `<div  id='flowgiri-app-container'>
+                  <div id="flowgiri-extension" class="z-[9999] bg-[#F3F3F3] flowgiri-applicaiton fixed top-[35px]  h-[98vh] w-[833px]">
+                     <iframe src="https://flowgiri.com/extension-check"  class="h-[100%] w-[100%]"></iframe>
+                   </div>
+                   <div id='flowgiri-app-bg' class='flowgiri-app-bg  z-[99]  fixed top-0 bottom-0 right-0 left-[33px] bg-[rgba(0,0,0,.2)]'></div>
+                </div>`;
 
-    setTimeout(function () {
+    setTimeout(() => {
+      $("body").append(div);
+    }, 300);
+  }, 3000);
 
-        let div = '<div id="flowGiriApp"> </div>';
+  $("body").on("click", ".left-sidebar-links", function () {
+    FlowGiriAppInterval = setInterval(tryInitApp, 100);
+  });
 
-        setTimeout(() => {
-            $("body").append(div);
+  $("body").on("click", ".flowgiri-icon-area", function () {
+    $("body").find("#flowgiri-extension").toggleClass("active");
+  });
 
-            FlowGiriInit();
-        }, 300)
+  $("body").on("click", "#flowgiri-app-bg", function () {
+    $("body").find("#flowgiri-extension").toggleClass("active");
+  });
+});
 
-    }, 1000)
-
-
-    $('body').on('click', ".left-sidebar-links", function () {
-        FlowGiriAppInterval = setInterval(tryInitApp, 100)
-    });
-
-    let toggleAPp = false;
-
-    $('body').on('click', ".flowgiri-icon-area", function () {
-
-        toggleAPp = !toggleAPp;
-
-        postMessage({
-            author: 'besnik-flowgiri-app-toggle',
-            toggle: toggleAPp
-        }, '*')
-
-    });
-
-
-    document.addEventListener('click', function(event) {
-          const isOutside = $(event.target).closest('#flowgiri-app-container');
-
-         if(!isOutside.length && toggleAPp && !$(event.target).closest('.flowgiri-icon-area').length) {
-             postMessage({
-                 author: 'besnik-flowgiri-app-toggle',
-                 toggle: false
-             }, '*')
-
-             toggleAPp = false ;
-         }
-
-    })
-
-
-    $("body").on('click', '#flowgiri-app-bg', function () {
-        postMessage({
-            author: 'besnik-flowgiri-app-toggle',
-            toggle: false
-        }, '*')
-        toggleAPp = false ;
-    })
-
-
-    // $("body").on('click', 'div[data-automation-id="left-sidebar-add-button"]', function () {
-    //     alert("oko")
-    // })
-
-})
-
-// var login = document.getElementById("login");
-// var register = document.getElementById("register");
-// var $token = localStorage.getItem("browserToken");
-// login.setAttribute('href', "http://127.0.0.1:8000/login?token="+$token);
-// register.setAttribute('href', "http://127.0.0.1:8000/register?token="+$token);
-
-FlowGiriAppInterval = setInterval(tryInitApp, 100)
-
-
-
-
-
-
-
+FlowGiriAppInterval = setInterval(tryInitApp, 100);
