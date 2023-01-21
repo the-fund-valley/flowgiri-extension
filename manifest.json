@@ -3,9 +3,7 @@
     "version": "1.0.0",
     "description": "Just Copy & Paste Webflow components and start building your website easily, and effortlessly with Flowgiri Chrome Extension.",
     "manifest_version": 3,
-    "permissions": [
-        "activeTab"
-    ],
+    "permissions": [],
     "content_scripts": [
       {
         "matches": ["https://webflow.com/*"],
