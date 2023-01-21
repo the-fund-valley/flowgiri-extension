@@ -3,9 +3,7 @@
     "version": "1.0.0",
     "description": "Admin copy to server",
     "manifest_version": 3,
-    "permissions": [
-        "activeTab"
-    ],
+    "permissions": [],
     "content_scripts": [
       {
         "matches": ["https://webflow.com/*"],
