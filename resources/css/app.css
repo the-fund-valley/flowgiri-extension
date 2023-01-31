@@ -33,7 +33,7 @@ body {
 .flowgiri-applicaiton.active{
     left: 35px;
     visibility: visible;
-    z-index: 999;
+    z-index: 999999;
     opacity: 1;
 }
 
@@ -45,7 +45,7 @@ body {
 }
 .flowgiri-applicaiton.active + .flowgiri-app-bg{
     visibility: visible;
-    z-index: 99;
+    z-index: 9999;
     opacity: 1;
 }
 

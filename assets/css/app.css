@@ -469,6 +469,39 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+
+  .container {
+    max-width: 1536px;
+  }
+}
 #flowgri-appplication-icon {
   position: absolute;
   left: 1px;
@@ -486,6 +519,9 @@ video {
 .visible {
   visibility: visible;
 }
+.collapse {
+  visibility: collapse;
+}
 .static {
   position: static;
 }
@@ -497,9 +533,6 @@ video {
 }
 .relative {
   position: relative;
-}
-.-bottom-\[32px\] {
-  bottom: -32px;
 }
 .top-\[35px\] {
   top: 35px;
@@ -516,30 +549,8 @@ video {
 .left-\[33px\] {
   left: 33px;
 }
-.z-\[1000\] {
-  z-index: 1000;
-}
-.z-\[9999\] {
-  z-index: 9999;
-}
 .z-\[99\] {
   z-index: 99;
-}
-.mx-\[15px\] {
-  margin-left: 15px;
-  margin-right: 15px;
-}
-.mt-\[52px\] {
-  margin-top: 52px;
-}
-.mt-\[30px\] {
-  margin-top: 30px;
-}
-.mb-\[15px\] {
-  margin-bottom: 15px;
-}
-.mt-\[15px\] {
-  margin-top: 15px;
 }
 .block {
   display: block;
@@ -556,20 +567,20 @@ video {
 .table {
   display: table;
 }
+.table-caption {
+  display: table-caption;
+}
+.table-cell {
+  display: table-cell;
+}
 .contents {
   display: contents;
 }
 .hidden {
   display: none;
 }
-.h-\[150px\] {
-  height: 150px;
-}
-.h-\[64px\] {
-  height: 64px;
-}
-.h-\[30px\] {
-  height: 30px;
+.\!hidden {
+  display: none !important;
 }
 .h-\[40px\] {
   height: 40px;
@@ -582,21 +593,6 @@ video {
 }
 .h-\[100\%\] {
   height: 100%;
-}
-.w-\[466px\] {
-  width: 466px;
-}
-.w-\[465px\] {
-  width: 465px;
-}
-.w-\[64px\] {
-  width: 64px;
-}
-.w-\[30px\] {
-  width: 30px;
-}
-.w-full {
-  width: 100%;
 }
 .w-\[40px\] {
   width: 40px;
@@ -616,54 +612,22 @@ video {
 .resize {
   resize: both;
 }
-.flex-col {
-  flex-direction: column;
-}
 .items-center {
   align-items: center;
 }
 .justify-center {
   justify-content: center;
 }
-.gap-\[12px\] {
-  gap: 12px;
-}
-.gap-\[10px\] {
-  gap: 10px;
-}
-.overflow-hidden {
+.truncate {
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.rounded-\[50\%\] {
-  border-radius: 50%;
-}
-.rounded-\[999px\] {
-  border-radius: 999px;
-}
-.border-\[1px\] {
-  border-width: 1px;
+.rounded {
+  border-radius: 0.25rem;
 }
 .border {
   border-width: 1px;
-}
-.border-solid {
-  border-style: solid;
-}
-.border-\[\#E9E9E9\] {
-  --tw-border-opacity: 1;
-  border-color: rgba(233, 233, 233, var(--tw-border-opacity));
-}
-.bg-\[\#fff\] {
-  --tw-bg-opacity: 1;
-  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
-}
-.bg-\[\#5E5DF0\] {
-  --tw-bg-opacity: 1;
-  background-color: rgba(94, 93, 240, var(--tw-bg-opacity));
-}
-.bg-\[\#5A1BFF\] {
-  --tw-bg-opacity: 1;
-  background-color: rgba(90, 27, 255, var(--tw-bg-opacity));
 }
 .bg-\[\#F3F3F3\] {
   --tw-bg-opacity: 1;
@@ -672,73 +636,35 @@ video {
 .bg-\[rgba\(0\2c 0\2c 0\2c \.2\)\] {
   background-color: rgba(0,0,0,.2);
 }
-.bg-opacity-\[0\.1\] {
-  --tw-bg-opacity: 0.1;
+.uppercase {
+  text-transform: uppercase;
 }
-.bg-\[url\(\'https\:\/\/besnik-space\.fra1\.cdn\.digitaloceanspaces\.com\/random\/3RAvGQCHlc6kYeSWcVSH1670487862\.png\'\)\] {
-  background-image: url('https://besnik-space.fra1.cdn.digitaloceanspaces.com/random/3RAvGQCHlc6kYeSWcVSH1670487862.png');
+.lowercase {
+  text-transform: lowercase;
 }
-.p-\[15px\] {
-  padding: 15px;
-}
-.py-\[15px\] {
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-.text-center {
-  text-align: center;
-}
-.text-\[20px\] {
-  font-size: 20px;
-}
-.text-\[18px\] {
-  font-size: 18px;
-}
-.text-\[16px\] {
-  font-size: 16px;
-}
-.font-bold {
-  font-weight: 700;
-}
-.font-medium {
-  font-weight: 500;
-}
-.font-\[400\] {
-  font-weight: 400;
-}
-.leading-\[20px\] {
-  line-height: 20px;
-}
-.leading-\[18px\] {
-  line-height: 18px;
-}
-.leading-\[24px\] {
-  line-height: 24px;
-}
-.leading-\[22px\] {
-  line-height: 22px;
-}
-.text-\[\#fff\] {
-  --tw-text-opacity: 1;
-  color: rgba(255, 255, 255, var(--tw-text-opacity));
-}
-.text-\[\#16004\] {
-  color: #16004;
-}
-.text-\[\#160042\] {
-  --tw-text-opacity: 1;
-  color: rgba(22, 0, 66, var(--tw-text-opacity));
-}
-.text-\[\#5A1BFF\] {
-  --tw-text-opacity: 1;
-  color: rgba(90, 27, 255, var(--tw-text-opacity));
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow);
 }
 .blur {
   --tw-blur: blur(8px);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
+.invert {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.\!invert {
+  --tw-invert: invert(100%) !important;
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow) !important;
+}
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.\!filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow) !important;
 }
 
 body {
@@ -757,7 +683,7 @@ body {
 .flowgiri-applicaiton.active{
     left: 35px;
     visibility: visible;
-    z-index: 999;
+    z-index: 999999;
     opacity: 1;
 }
 
@@ -769,7 +695,7 @@ body {
 }
 .flowgiri-applicaiton.active + .flowgiri-app-bg{
     visibility: visible;
-    z-index: 99;
+    z-index: 9999;
     opacity: 1;
 }
 

@@ -1,6 +1,6 @@
 {
     "name": "Flowgiri - Webflow chrome extension",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Just Copy & Paste Webflow components and start building your website easily, and effortlessly with Flowgiri Chrome Extension.",
     "manifest_version": 3,
     "permissions": [],
